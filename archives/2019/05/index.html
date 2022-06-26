@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://jiangwennn.github.io/archives/2019/04/"/>
+  <link rel="canonical" href="http://jiangwennn.github.io/archives/2019/05/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,13 +32,13 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>归档：2019/4 - Jiangwennn的学习笔记</title>
+  <title>归档：2019/5 - Jiangwennn的学习笔记</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="不积跬步无以至千里 - Jiangwennn - Jiangwennn的学习笔记">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jiangwennn的学习笔记">
-<meta property="og:url" content="http://jiangwennn.github.io/archives/2019/04/index.html">
+<meta property="og:url" content="http://jiangwennn.github.io/archives/2019/05/index.html">
 <meta property="og:site_name" content="Jiangwennn的学习笔记">
 <meta property="og:description" content="不积跬步无以至千里">
 <meta property="og:locale" content="zh_CN">
@@ -2390,6 +2390,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
       
     
     
@@ -2397,7 +2399,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/phpstorm-xdebug.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/mysql-explain.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2415,23 +2417,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/phpstorm-xdebug.html"  itemprop="url">
-        phpstorm + xdebug断点调试
+      <a href="/post/mysql-explain.html"  itemprop="url">
+        MySQL Explain命令用法
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        一、安装Xdebug在Xdebug官网下载页可以下载xdebug，可以根据自己的PHP版本下载对应的xdebug版本，需要注意的有三个关键点：
-
-PHP版本号 5.x 还是 7.x
-32位还是64位
-TS（线程安全）还是NTS（非线程安全）
-
-如果不太清楚自己的PHP版本,可以点击下图所示红框内的链接，分析phpinfo打印的信息，自动提供对应的下载版本
-
-浏览器打开phpinfo信息，ct...
+        一、介绍explain显示了mysql如何使用索引来处理select语句以及连接表。可以帮助选择更好的索引和写出更优化的查询语句。
+使用方法：在select语句前加上explain就可以了：
+mysql&gt; explain select user,host from user\G
+*************************** 1. row *******************...
       
     
   </div>
@@ -2439,12 +2436,73 @@ TS（线程安全）还是NTS（非线程安全）
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2019-04-21T11:56:46+08:00">2019-04-21</time>
+        <time itemprop="dateCreated datePublished" datetime="2019-05-23T00:23:52+08:00">2019-05-23</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/phpstorm-xdebug.html' itemprop="url">
+          <a class='readmore' href='/post/mysql-explain.html' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/mysql-data-type.html">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Jiangwennn的学习笔记">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Jiangwennn的学习笔记">
+    <meta itemprop="description" content="不积跬步无以至千里">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/post/mysql-data-type.html"  itemprop="url">
+        MySQL数据类型与约束条件
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        一、MySQL的数据类型主要包括以下五大类：
+
+整数类型：BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、 INT、 BIG INT
+
+浮点数类型：FLOAT、DOUBLE、DECIMAL
+
+字符串类型：CHAR、VARCHAR、TINY TEXT、TEXT、MEDIUM TEXT、LONGTEXT、TINY BLOB、BLOB、MEDIUM BLOB、LONG...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2019-05-14T22:50:49+08:00">2019-05-14</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/post/mysql-data-type.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -3794,7 +3852,7 @@ TS（线程安全）还是NTS（非线程安全）
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://jiangwennn.github.io/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io/archives/2019/","name":"2019年"}},{"@type":"ListItem","position":4,"item":{"@id":"http://jiangwennn.github.io/archives/2019/4/","name":"4月"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://jiangwennn.github.io/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io/archives/2019/","name":"2019年"}},{"@type":"ListItem","position":4,"item":{"@id":"http://jiangwennn.github.io/archives/2019/5/","name":"5月"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

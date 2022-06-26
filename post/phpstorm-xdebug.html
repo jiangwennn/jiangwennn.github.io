@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
     <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.5.0'>
   <meta name="generator" content="Hexo 5.4.2">
   <meta name="Volantis" content="5.5.0">
@@ -41,10 +41,10 @@
 <meta property="og:url" content="http://jiangwennn.github.io/post/phpstorm-xdebug.html">
 <meta property="og:site_name" content="Jiangwennn的学习笔记">
 <meta property="og:description" content="一、安装Xdebug在Xdebug官网下载页可以下载xdebug，可以根据自己的PHP版本下载对应的xdebug版本，需要注意的有三个关键点：  PHP版本号 5.x 还是 7.x 32位还是64位 TS（线程安全）还是NTS（非线程安全）  如果不太清楚自己的PHP版本,可以点击下图所示红框内的链接，分析phpinfo打印的信息，自动提供对应的下载版本  浏览器打开phpinfo信息，ctrl">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2019-04-21T03:56:46.000Z">
-<meta property="article:modified_time" content="2022-06-19T16:21:12.716Z">
+<meta property="article:modified_time" content="2022-06-24T10:17:52.730Z">
 <meta property="article:author" content="Jiangwennn">
 <meta property="article:tag" content="PHP">
 <meta name="twitter:card" content="summary">
@@ -1637,7 +1637,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.4d580c89.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.13e9f403.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1655987965954),
+    lastupdate: new Date(1656248657820),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2431,7 +2431,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2019-04-21T11:56:46+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 21, 2019</p>
+    <p>发布于：2019年4月21日</p>
   </a>
 </div>
 
@@ -2483,21 +2483,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>重启服务器后再次打开phpinfo，验证安装是否成功，<code>ctrl + F</code> 搜索 xdebug关键字，显示如下版本信息即安装成功</p>
 <p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220619183155.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220619183155.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="xdebug"></p>
 </div><div class="story post-story"><h2 id="二、配置xdebug"><a href="#二、配置xdebug" class="headerlink" title="二、配置xdebug"></a>二、配置xdebug</h2><p>本文开启的配置如下</p>
-<pre class="line-numbers language-none"><code class="language-none">[XDebug]
-xdebug.profiler_output_dir&#x3D;&quot;D:\phpStudy\tmp\xdebug&quot;
-xdebug.trace_output_dir&#x3D;&quot;D:\phpStudy\tmp\xdebug&quot;
-zend_extension&#x3D;&quot;D:\phpStudy\php\php-7.1.27\ext\php_xdebug.dll&quot;
+<pre><code class="ini">[XDebug]
+xdebug.profiler_output_dir=&quot;D:\phpStudy\tmp\xdebug&quot;
+xdebug.trace_output_dir=&quot;D:\phpStudy\tmp\xdebug&quot;
+zend_extension=&quot;D:\phpStudy\php\php-7.1.27\ext\php_xdebug.dll&quot;
 
-xdebug.remote_enable &#x3D; 1
-xdebug.remote_autostart &#x3D; 1
-xdebug.remote_host &#x3D; localhost
-xdebug.remote_mode &#x3D; req
-xdebug.remote_handler &#x3D; dbgp
-xdebug.remote_port &#x3D; 9000
-xdebug.idekey &#x3D; PHPSTORM
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1
+xdebug.remote_host = localhost
+xdebug.remote_mode = req
+xdebug.remote_handler = dbgp
+xdebug.remote_port = 9000
+xdebug.idekey = PHPSTORM
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+</code></pre>
 <p>####【xdebug配置说明】</p>
 <p><strong>开启Xdebug方式的错误提示：</strong><br>只要启用了xdebug扩展那么该功能是默认开启的，将以xdebug的风格进行错误显示，如果想以原php的风格显示可以在配置文件中设置：xdebug.default_enable=0，注意该设置项并不是指关闭xdebug的所有功能</p>
 <p><strong>配置大变量的显示：</strong><br>在有些程序中变量会很大，比如著名内容管理系统drupal8中的节点渲染数组，如果直接<code>print_r</code>那么可以将内存8G的I5计算机卡死，所以Xdebug提供了配置大变量打印配置以避免这种情况，配置以下配置项：<br><code>xdebug.var_display_max_children</code><br>整数，默认<code>128</code>，显示的数组子元素或对象属性的最大数量，不限制则设定为<code>-1</code>，远程调试时不受影响<br><code>xdebug.var_display_max_data</code><br>整数，默认<code>512</code>，显示字符串的最大长度，不限设置为<code>-1</code>，不影响远程调试<br><code>xdebug.var_display_max_depth</code><br>整数，默认<code>3</code>，显示数组或对象属性时的最大嵌套深度，最大<code>1023</code>，可以用<code>-1</code>指代这个最大数</p>
@@ -2506,11 +2505,10 @@ xdebug.idekey &#x3D; PHPSTORM
 <p>以上设置将为所有请求产生分析文件，调用追踪分析还可以采用变量触发的方式（可通过浏览器扩展自动完成，这也是推荐方法，见下），也就是在<code>GET/POST</code> 或<code>COOKIE</code>中设置变量名<code>XDEBUG_TRACE</code>，它的值是和以下设置项匹配的密钥，配置如下：<br><code>xdebug.auto_trace=0</code><br>;开启变量触发跟踪时自动跟踪需要关闭<br><code>xdebug.trace_enable_trigger=1</code><br><code>xdebug.trace_enable_trigger_value=&quot;yunke&quot;</code><br>;这就是上述<code>XDEBUG_TRACE</code>变量的值<br>如访问网址：<a target="_blank" rel="noopener" href="http://www.test.com/index.php?XDEBUG_TRACE=yunke%EF%BC%8C%E5%8D%B3%E5%8F%AF%E8%A7%A6%E5%8F%91%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E4%BA%A7%E7%94%9F">http://www.test.com/index.php?XDEBUG_TRACE=yunke，即可触发追踪文件的产生</a><br>这里”yunke”是一个密钥值，只有和配置文件匹配才能产生分析文件，默认为空字符</p>
 <p><strong>代码覆盖分析：</strong><br>该功能可以让我们知道代码执行中哪些行被执行到了，通常用于单元测试，配置如下：<br><code>xdebug.coverage_enable=1</code><br>;代码覆盖分析开启</p>
 <p>代码覆盖分析是通过在php代码中调用函数来进行的，过程如下，那将得到一个数组结果：</p>
-<pre class="line-numbers language-none"><code class="language-none">xdebug_start_code_coverage();&#x2F;&#x2F;开启覆写
-…&#x2F;&#x2F;被分析的一些代码
-var_dump(xdebug_get_code_coverage());&#x2F;&#x2F;得到一个分析结果数组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
+<pre><code>xdebug_start_code_coverage();//开启覆写
+…//被分析的一些代码
+var_dump(xdebug_get_code_coverage());//得到一个分析结果数组
+</code></pre>
 <p><strong>垃圾回收分析：</strong><br>该功能默认是关闭的，开启后将输出垃圾回收分析数据到一个文件，查看文件即可，配置如下（这里值设定为我们最常用的情况以便复制使用，更多见下文的配置说明）：<br><code>xdebug.gc_stats_enable=1</code><br>;开启垃圾回收分析<br><code>xdebug.gc_stats_output_dir=&quot;C:\root\xdebug\gc&quot;</code><br>;数据输出目录，默认是<code>/tmp</code><br><code>xdebug.gc_stats_output_name=”gcstats.%s.%u”</code><br>;输出文件名，默认是: <code>gcstats.%p</code></p>
 <p><strong>程序性能分析：</strong><br>该功能默认是关闭的，开启后将输出性能分析数据到一个文件，该文件是便于机器解析的文本格式，需要专用软件查看，配置如下（这里值设定为我们最常用的情况以便复制使用，更多见下文的配置说明）：<br><code>xdebug.profiler_enable=1</code><br>;开启性能分析<br><code>xdebug.profiler_output_dir=&quot;C:\root\xdebug\profiler&quot;</code><br>;性能分析文件输出目录<br><code>xdebug.profiler_output_name=&quot;cachegrind.out.%s.%u&quot;</code><br>;性能分析输出文件名</p>
 <p>以上设置将为所有请求产生分析文件，性能分析还可以采用变量触发的方式（可通过浏览器扩展自动完成，这也是推荐方法，见下），也就是在<code>GET/POST</code> 或<code>COOKIE</code>中设置变量名<code>XDEBUG_PROFILE</code>，它的值是和以下设置项匹配的密钥，配置如下：<br><code>xdebug.profiler_enable=0</code><br>;开启变量触发分析时自动分析需要关闭<br><code>xdebug.profiler_enable_trigger=1</code><br><code>xdebug.profiler_enable_trigger_value=&quot;yunke&quot;</code><br>;这就是上述<code>XDEBUG_PROFILE</code>变量的值<br>即可触发分析文件的产生，如访问网址：<a target="_blank" rel="noopener" href="http://www.test.com/index.php?XDEBUG_PROFILE=yunke">http://www.test.com/index.php?XDEBUG_PROFILE=yunke</a><br>这里”yunke”是一个密钥值，只有和配置文件匹配才能产生分析文件，默认为空字符</p>
@@ -2518,37 +2516,51 @@ var_dump(xdebug_get_code_coverage());&#x2F;&#x2F;得到一个分析结果数组<
 <p><strong>远程调试：</strong><br>我们先看一下远程调试的整个过程，首先由浏览器附带特殊参数打开要调试的脚本，脚本开始运行，此时Xdebug会主动向配置好的调试客户端发起一个连接，并采用DBGp协议和调试客户端交互（调试客户端往往就是我们使用的IDE，如phpstorm，它需要监听调试网络端口），调试客户端通过协议让Xdebug一步一步的执行代码，显示或设置程序中的变量内容，在每一步之间Xdebug将php程序挂起暂停执行，这个“步”又叫断点，调试客户端可以通过设置断点来让程序在该处暂停，对于调试客户端而言这又叫做断点调试，整个过程而言是Xdebug在php引擎里一步一步的执行代码并操作这个过程，她接收调试客户端的指令。<br>要进行远程调试具体操作如下，首先需要以下配置并重启php：<br><code>xdebug.remote_enable=1</code><br>;远程调试开关<br><code>xdebug.remote_host=localhost</code><br>;远程调试客户端主机地址，也就是IDE所在主机的地址，往往就是localhost<br><code>xdebug.remote_port=9000</code><br>;远程调试端口<br>配置好后，我们在浏览器中打开脚本，打开时需要发送<code>GET/POST</code>变量名<code>XDEBUG_SESSION_START</code>或者<code>COOKIE</code>变量名<code>XDEBUG_SESSION</code>，其值是Xdebug和调试客户端的通信会话id，往往是ide指定的一个特殊字符，如phpstorm指定为“<code>PHPSTORM</code>”，该值可以在<code>xdebug.idekey</code>配置中设定，默认为空字符串；浏览器附加的参数可以通过浏览器扩展自动完成（见下）；服务器收到请求后依据<code>xdebug.remote_mode</code>配置项的设定开始调试过程，该配置项如果是“<code>req</code>”那么脚本刚启动时Xdebug就向调试客户端（IDE）发起调试连接，这也是默认值，如果是“<code>jit</code>”那么仅在有错误出现时才发起连接，一旦和IDE的连接建立成功那么就采用DBGp协议进行调试交互。<br>如果服务器是被多个开发者共享的，那么调试客户机会有多个，而<code>xdebug.remote_host</code>配置项只能设定一个，此时可以将<code>xdebug.remote_connect_back</code>设定为<code>1</code>，那将采用从http头中获取的ip来作为调试客户机的地址。<br>Xdebug在发起调试连接时默认超时时间为200毫秒，该值在<code>xdebug.remote_timeout</code>配置项中设置，在本机调试该值足够了，如果是远程的网络主机那么需要加大该值以应对网络延迟。</p>
 <p><strong>浏览器插件辅助：</strong><br>如前文所述，触发方式产生分析、追踪文件和开启远程调试都需要在<code>GET/POST</code> 或<code>COOKIE</code>里面设置特定变量和值，那么我们能否让浏览器代劳呢，这是可以的，这里以开发者使用最多的火狐浏览器为列来说明：<br>先安装辅助插件，打开地址：<a target="_blank" rel="noopener" href="https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/">https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/</a><br>你将看到<code>Xdebug Helper for Firefox</code> ，点击Add to Firefox，按照提示操作即可<br>安装完成后需要进行配置：按组合键“<code>ctrl+shift+a</code>”打开附加组件面板，找到Xdebug Helper，点击选项，分别输入IDE远程会话id、分析密钥、追踪密钥（对应配置中<code>xdebug.idekey</code>、<code>xdebug.profiler_enable_trigger_value</code>、<code>xdebug.trace_enable_trigger_value</code>），点击保存，此时新开网页的浏览器地址栏中将出现一个爬虫图标，可以选择四种状态：调试、分析、追踪、禁用，前三种种状态下浏览器打开连接时会附带额外的cookie参数，比如我们选择分析，那么刷新连接时将在cookie中添加<code>XDEBUG_PROFILE</code>变量，值为前文设定的密钥值，这将让Xdebug产生分析文件，函数追踪和远程调试同理。</p>
 <h3 id="【常用配置】"><a href="#【常用配置】" class="headerlink" title="【常用配置】"></a>【常用配置】</h3><p>全部设置及详细见：<a target="_blank" rel="noopener" href="https://xdebug.org/docs/all_settings%EF%BC%8C%E6%9C%AC%E6%96%87%E5%8F%AA%E8%BF%9B%E8%A1%8C%E5%A4%A7%E6%A6%82%E4%BB%8B%E7%BB%8D">https://xdebug.org/docs/all_settings，本文只进行大概介绍</a><br><code>xdebug.trace_output_dir</code><br>函数调用跟踪数据文件的写入目录，默认为 /tmp，确保可写<br><code>xdebug.trace_output_name</code><br>追踪文件的文件名指引，默认为：<code>trace.%c</code>  比如：<code>yunke.%s.%u</code> 将输出带路径的脚步名及带微秒的时间，如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">yunke.C__root_test_index_php.1520473784_260486.xt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre><code>yunke.C__root_test_index_php.1520473784_260486.xt
+</code></pre>
 <p><code>xdebug.auto_trace</code><br>开启函数调用追踪，布尔值，默认为<code>0</code><br><code>xdebug.collect_assignments</code><br>布尔值，默认为<code>0</code>，是否在函数追踪中添加变量赋值<br><code>xdebug.collect_includes</code><br>布尔值，默认为<code>1</code>，是否将<code>include()</code>, <code>include_once()</code>, <code>require()</code> or <code>require_once()</code> 的文件写入追踪文件<br><code>xdebug.collect_params</code><br>整数，默认<code>0</code>，决定函数追踪的参数收集，<code>0</code>为不收集，<code>1</code>参数的类型和数量，<code>2</code>在1基础上加工具提示信息，<code>3</code>全变量内容（受到变量输出设置的影响），<code>4</code>全变量内容和变量名，<code>5</code>php序列化内容没有变量名<br><code>xdebug.collect_return</code><br>布尔值，默认<code>0</code>，是否写入函数调用的返回值到追踪文件<br><code>xdebug.show_mem_delta</code><br>整数，默认为<code>0</code>，非0值将显示函数调用的内存用量信息<br><code>xdebug.trace_format</code><br>整型，默认<code>0</code>，追踪文件的格式，<code>0</code>为人类可读格式（时间索引，内存用量等等）<code>1</code>机器易读格式  <code>2</code>人类可读格式以网页展现<br><code>xdebug.trace_options</code><br>整数，默认为<code>0</code>，如果设置为<code>1</code>，那么追踪文件采用追加方式，而不是覆盖<br><code>xdebug.var_display_max_children</code><br>整数，默认<code>128</code>，显示的数组子元素或对象属性的最大数量，不限制设定为<code>-1</code>，远程调试时不受影响<br><code>xdebug.var_display_max_data</code><br>整数，默认<code>512</code>，显示字符串的最大长度，不限设置为<code>-1</code>，不影响远程调试<br><code>xdebug.var_display_max_depth</code><br>整数，默认<code>3</code>，显示数组或对象属性时的最大嵌套深度，最大<code>1023</code>，可以用<code>-1</code>指代这个最大数<br><code>xdebug.coverage_enable</code><br>布尔，默认为<code>1</code>，是否开启代码覆盖分析，实测该设置项无效，开启和得到分析结果需用函数<br><code>xdebug.gc_stats_enable</code><br>布尔值，默认为<code>0</code>，是否开启垃圾回收统计分析<br><code>xdebug.gc_stats_output_dir</code><br>垃圾统计分析的写入目录，注意权限<br><code>xdebug.gc_stats_output_name</code><br>垃圾分析文件的文件名，和追踪分析的文件名规则一样<br><code>xdebug.profiler_enable</code><br>整数，默认为<code>0</code>，为<code>1</code>时将开启性能分析功能<br><code>xdebug.profiler_aggregate</code><br>整数，默认<code>0</code>，非<code>0</code>时将多个请求的分析数据写入一个文件中以进行跨请求分析<br><code>xdebug.profiler_append</code><br>整数，默认<code>0</code>，分析文件是否采用追加模式，文件名的设定对该项有影响<br><code>xdebug.profiler_enable_trigger</code><br>整数，默认为0，采用触发模式开启分析功能，开启它时需要关闭<code>xdebug.profiler_enable</code><br><code>xdebug.profiler_enable_trigger_value</code><br>字符串。默认为“”，触发分析的密钥，配合<code>xdebug.profiler_enable_trigger</code>使用<br><code>xdebug.profiler_output_dir</code><br>字符串，默认为<code>/tmp</code>，分析文件输出目录<br><code>xdebug.profiler_output_name</code><br>分析文件名称，默认为<code>cachegrind.out.%p</code>，见<code>xdebug.trace_output_name</code><br><code>xdebug.extended_info</code><br>整型，默认为<code>1</code>，是否强制<code>php</code>解析器执行<code>extended_info</code>模式<br><code>xdebug.idekey</code><br>字符串，默认:<code> *complex*</code>，调试会话id，经测试浏览器发送任意值均可开始调试，所以她并非密钥值，但有些调试客户端可以通过它来判断是否接受调试连接，所以最好统一<br><code>xdebug.remote_addr_header</code><br>默认为空字符串“”，用以指定哪个http头代表调试客户端地址，和<code>xdebug.remote_connect_back </code>组合使用<br><code>xdebug.remote_autostart</code><br>布尔值，默认<code>0</code>，通常使用特定变量开始远程调试，如果该项被设置为<code>1</code>，那么总是开启<br><code>xdebug.remote_connect_back</code><br>布尔值，默认<code>0</code>，解决多人调试问题，忽略设定的固定ip，指示服务器依据请求地址链接<br><code>xdebug.remote_cookie_expire_time</code><br>整数。默认<code>3600</code>，远程调试cookie超期时间<br><code>xdebug.remote_enable</code><br>布尔值，默认<code>0</code>，是否启用远程调试<br><code>xdebug.remote_host</code><br>字符串，默认：<code>localhost</code>，远程调试客户端的地址<br><code>xdebug.remote_log</code><br>字符串，默认空，远程调试日志文件名<br><code>xdebug.remote_mode</code><br>字符串，远程调试默认，<code>req</code>脚本一启动就链接，<code>jit</code>当错误发生时链接<br><code>xdebug.remote_port</code><br>远程调试端主机端口，默认<code>9000</code><br><code>xdebug.remote_timeout</code><br>整数，默认<code>200</code>，单位毫秒，等待调试链接的时间<br><code>xdebug.default_enable</code><br>布尔值，<code>1</code>或<code>0</code>，开启以xdebug的方式进行错误提示，默认开启<br><code>xdebug.max_nesting_level</code><br>整数，默认为：<code>256</code>，无限递归的保护机制，当递归调用达到该设定时程序被中断<br><code>xdebug.max_stack_frames</code><br>整数，默认值<code>-1</code>，设定错误提示时堆栈中有多少个帧被显示<br><code>xdebug.scream</code><br>布尔值，默认为<code>0</code>，是否禁用“<code>@</code>”，以便错误被强制显示</p>
 <p>xdebug扩展开启后具备的函数：<br>当扩展被加载后，php脚本中可以使用以下函数：<br>（这里只列出部分，全部请见<a target="_blank" rel="noopener" href="https://xdebug.org/docs/all_functions%EF%BC%89">https://xdebug.org/docs/all_functions）</a></p>
-<pre class="line-numbers language-none"><code class="language-none">string xdebug_call_class( [int $depth &#x3D; 1] )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>string xdebug_call_class( [int $depth = 1] )
+</code></pre>
 <p>显示调用类</p>
-<pre class="line-numbers language-none"><code class="language-none">string xdebug_call_file( [int $depth &#x3D; 1] )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>string xdebug_call_file( [int $depth = 1] )
+</code></pre>
 <p>显示调用文件</p>
-<pre class="line-numbers language-none"><code class="language-none">string xdebug_call_function( [int $depth &#x3D; 1] )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>string xdebug_call_function( [int $depth = 1] )
+</code></pre>
 <p>返回调用函数</p>
-<pre class="line-numbers language-none"><code class="language-none">int xdebug_call_line( [int $depth &#x3D; 1] )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>int xdebug_call_line( [int $depth = 1] )
+</code></pre>
 <p>返回调用行</p>
-<pre class="line-numbers language-none"><code class="language-none">void xdebug_disable()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>void xdebug_disable()
+</code></pre>
 <p>禁用堆栈跟踪</p>
-<pre class="line-numbers language-none"><code class="language-none">void xdebug_enable()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>void xdebug_enable()
+</code></pre>
 <p>开启堆栈跟踪</p>
-<pre class="line-numbers language-none"><code class="language-none">bool xdebug_is_enabled()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>bool xdebug_is_enabled()
+</code></pre>
 <p>检查堆栈跟踪是否被开启</p>
-<pre class="line-numbers language-none"><code class="language-none">string xdebug_get_collected_errors( [int clean] )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>string xdebug_get_collected_errors( [int clean] )
+</code></pre>
 <p>从错误集缓冲中返回所有错误信息</p>
-<pre class="line-numbers language-none"><code class="language-none">array xdebug_get_headers()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>array xdebug_get_headers()
+</code></pre>
 <p>返回header() 函数设置的所有头信息</p>
-<pre class="line-numbers language-none"><code class="language-none">int xdebug_memory_usage()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>int xdebug_memory_usage()
+</code></pre>
 <p>返回内存使用量</p>
-<pre class="line-numbers language-none"><code class="language-none">int xdebug_peak_memory_usage()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>int xdebug_peak_memory_usage()
+</code></pre>
 <p>返回到目前为止脚本使用过的最大内存用量</p>
-<pre class="line-numbers language-none"><code class="language-none">void xdebug_start_error_collection()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>void xdebug_start_error_collection()
+</code></pre>
 <p>收集错误并禁止显示</p>
-<pre class="line-numbers language-none"><code class="language-none">void xdebug_stop_error_collection()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>void xdebug_stop_error_collection()
+</code></pre>
 <p>停止错误记录，并从缓冲中收集</p>
-<pre class="line-numbers language-none"><code class="language-none">float xdebug_time_index()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>float xdebug_time_index()
+</code></pre>
 <p>返回当前点的执行时间，单位秒</p>
 <blockquote>
 <p>xdebug配置解释部分转载自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u011474028/article/details/79571909">php调试工具Xdebug使用教程</a></p>
@@ -2601,12 +2613,12 @@ var_dump(xdebug_get_code_coverage());&#x2F;&#x2F;得到一个分析结果数组<
               </div>
               <div class="license-meta-item">
                 <div class="license-meta-title">发布于</div>
-                <div class="license-meta-text">Apr 21, 2019</div>
+                <div class="license-meta-text">2019年4月21日</div>
               </div>
               
               <div class="license-meta-item">
                 <div class="license-meta-title">更新于</div>
-                <div class="license-meta-text">Jun 20, 2022</div>
+                <div class="license-meta-text">2022年6月24日</div>
               </div>
               
               
@@ -2631,10 +2643,10 @@ var_dump(xdebug_get_code_coverage());&#x2F;&#x2F;得到一个分析结果数组<
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-06-20T00:21:12+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-06-24T18:17:52+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 20, 2022</p>
+    <p>更新于：2022年6月24日</p>
   </a>
 </div>
 
@@ -2711,6 +2723,25 @@ var_dump(xdebug_get_code_coverage());&#x2F;&#x2F;得到一个分析结果数组<
   
   
 
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/post/mysql-data-type.html'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>MySQL数据类型与约束条件</p>
+          <p class='content'>一、MySQL的数据类型主要包括以下五大类：
+
+整数类型：BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、 INT、 BIG INT
+
+浮点数类型：FLOAT、DO...</p>
+        </a>
+      
+      
+        <a class='next' href='/post/lamp-env-build.html'>
+          <p class='title'>LAMP环境搭建<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>LAMP环境搭建是PHP程序员必须掌握的一项基本技能，但是对于初学者来说，操作步骤比较繁琐。本文是作者个人对LAMP环境搭建的整个流程的理解，在此学习分享，希望对学习PHP的同学有所帮助，欢迎指...</p>
+        </a>
+      
+    </div>
   
   <!-- Custom Files postEnd begin-->
   
@@ -2848,27 +2879,6 @@ var_dump(xdebug_get_code_coverage());&#x2F;&#x2F;得到一个分析结果数组<
   
   <footer class="footer clearfix"  itemscope itemtype="http://schema.org/WPFooter">
     <br><br>
-    
-      
-        <div class="aplayer-container">
-          
-
-
-        </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
     
       
         <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
@@ -3516,6 +3526,17 @@ var_dump(xdebug_get_code_coverage());&#x2F;&#x2F;得到一个分析结果数组<
 
   <script>
 
+  volantis.css("https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/monokai.min.css");
+
+
+  volantis.js("https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js").then(()=>{
+    volantis.requestAnimationFrame(hljs.highlightAll)
+  })
+  volantis.pjax.push(()=>{
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block);
+    });
+  },"highlightjs")
 
 
   function pjax_highlightjs_copyCode(){
@@ -4011,7 +4032,7 @@ var_dump(xdebug_get_code_coverage());&#x2F;&#x2F;得到一个分析结果数组<
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io//post/phpstorm-xdebug.html","name":"phpstorm + xdebug断点调试"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"phpstorm + xdebug断点调试","description":"不积跬步无以至千里","inLanguage":"zh","mainEntityOfPage":{"@type":"WebPage","@id":"http://jiangwennn.github.io/post/phpstorm-xdebug.html"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://jiangwennn.github.io/post/phpstorm-xdebug.html","wordCount":0,"datePublished":"2019-04-21T03:56:46.000Z","dateModified":"2022-06-19T16:21:12.716Z","keywords":"PHP","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io//post/phpstorm-xdebug.html","name":"phpstorm + xdebug断点调试"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"phpstorm + xdebug断点调试","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://jiangwennn.github.io/post/phpstorm-xdebug.html"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://jiangwennn.github.io/post/phpstorm-xdebug.html","wordCount":0,"datePublished":"2019-04-21T03:56:46.000Z","dateModified":"2022-06-24T10:17:52.730Z","keywords":"PHP","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
