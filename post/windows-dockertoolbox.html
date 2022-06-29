@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://jiangwennn.github.io/about/"/>
+  <link rel="canonical" href="http://jiangwennn.github.io/post/windows-dockertoolbox.html"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,18 +32,22 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>about - Jiangwennn的学习笔记</title>
-  <meta name="keywords" content="null">
+  <title>Windows下使用DockerToolbox - Jiangwennn的学习笔记</title>
+  <meta name="keywords" content="docker,Windows,null">
   <meta desc name="description" content="不积跬步无以至千里 - Jiangwennn - Jiangwennn的学习笔记">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://jiangwennn.github.io/about/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下使用DockerToolbox">
+<meta property="og:url" content="http://jiangwennn.github.io/post/windows-dockertoolbox.html">
 <meta property="og:site_name" content="Jiangwennn的学习笔记">
+<meta property="og:description" content="一、使用DockerToolbox原因 Docker for Windows 基于 Hyperv，同时使用安卓模拟器需要开启Intel Virtual Technology(VT-x)，而Hyper-v与VT-x冲突，不可同时开启； Hyper-v是Windows 10 专业版才有的功能，家庭版虽然也能通过一些方法开启，但相对来说会比较麻烦   DockerToolbox实际上是利用 Virtua">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2022-06-15T12:03:27.000Z">
-<meta property="article:modified_time" content="2022-06-15T12:03:27.603Z">
+<meta property="article:published_time" content="2021-06-27T11:12:34.000Z">
+<meta property="article:modified_time" content="2022-06-27T11:25:18.718Z">
 <meta property="article:author" content="Jiangwennn">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2445,7 +2449,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper page search' style="display: none;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://raw.githubusercontent.com/jiangwennn/images/master/20220619221046.png"></div>
 
@@ -2502,8 +2506,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-page" id="page" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/about/index.html">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/windows-dockertoolbox.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2524,16 +2528,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        about
+        Windows下使用DockerToolbox
       </h1>
       <div class='new-meta-box'>
         
           
             
 <div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <a itemprop="url" class='author' href="/" rel="nofollow">
-    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-    <p itemprop="name">请设置文章作者</p>
+  <a itemprop="url" class='author' href="https://jiangwennn.github.io" rel="nofollow">
+    <img itemprop="image" src="https://raw.githubusercontent.com/jiangwennn/images/master/20220619233343.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220619233343.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Jiangwennn</p>
   </a>
 </div>
 
@@ -2545,10 +2549,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-06-15T20:03:27+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-06-27T19:12:34+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2022年6月15日</p>
+    <p>发布于：2021年6月27日</p>
   </a>
 </div>
 
@@ -2563,7 +2567,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <p>
       <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="lc-pv" data-title="about" data-path="/about/">
+      <span id="lc-pv" data-title="Windows下使用DockerToolbox" data-path="/post/windows-dockertoolbox">
         <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
       </span>
       
@@ -2585,10 +2589,129 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <div class="story post-story"><h2 id="一、使用DockerToolbox原因"><a href="#一、使用DockerToolbox原因" class="headerlink" title="一、使用DockerToolbox原因"></a>一、使用DockerToolbox原因</h2><ol>
+<li>Docker for Windows 基于 Hyperv，同时使用安卓模拟器需要开启Intel Virtual Technology(VT-x)，而Hyper-v与VT-x冲突，不可同时开启；</li>
+<li>Hyper-v是Windows 10 专业版才有的功能，家庭版虽然也能通过一些方法开启，但相对来说会比较麻烦</li>
+</ol>
+<blockquote>
+<p>DockerToolbox实际上是利用 VirtualBox 创建一个虚拟机，实现docker 守护进程的运行</p>
+</blockquote>
+</div><div class="story post-story"><h2 id="二、安装DockerToolbox"><a href="#二、安装DockerToolbox" class="headerlink" title="二、安装DockerToolbox"></a>二、安装DockerToolbox</h2><ol>
+<li>下载DockerToolbox</li>
+</ol>
+<p>阿里云镜像下载地址： <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/">http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/</a><br>Docker分为CE 和 EE两个版本 CE为社区免费版，EE为企业版，这里下载CE最新版就好了</p>
+<ol start="2">
+<li>安装DockerToolbox</li>
+</ol>
+<p>直接双击下载好的.exe文件即可安装，安装过程中可以自己选择安装的组件<br>其中VirtualBox组件如果已经安装过了，可以取消勾选；git 也最好不要勾选，默认提供的版本较低，建议自行安装</p>
+<ol start="3">
+<li>双击桌面上生成的Docker Quickstart Terminal 图标即可自动开始运行；</li>
+</ol>
+<p>使用此方式安装出现错误的概率较高，建议到第4步手动执行命令。</p>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191438.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191438.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p>下面是正常运行的样子，实际上如果没有正确安装，可能会出现一些错误<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191522.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191522.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<ol start="4">
+<li>安装docker虚拟机</li>
+</ol>
+<p>如果使用Docker Quickstart Terminal，会自动安装一个的default虚拟机，但是有时可能会因为boot2docker.iso文件不存在或者版本比较老，会自动去github下载，导致时间比较长甚至失败。 </p>
+<p>操作步骤如下：<br>① 从Docker Toolbox的安装目录下复制boot2docker.iso至C:\Users\用户名.docker\machine\cache目录<br>② cd 至C:\Users\用户名.docker\machine\cache目 录执行下面的命令</p>
+<pre><code class="shell">docker-machine create --driver virtualbox --virtualbox-boot2docker-url=boot2docker.iso --engine-registry-mirror=https://registry.docker-cn.com default
+</code></pre>
+<blockquote>
+<p>–engine-registry-mirror= 选项设置镜像加速，推荐使用阿里云镜像；<br>–virtualbox-boot2docker-url=boot2docker.iso 是指定创建虚拟机需要的镜像文件的地址<br>其他选项查看手册  docker-machine create –help</p>
+</blockquote>
+<p>安装成功后执行docker-machine ssh进入虚拟机内进行操作</p>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191647.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191647.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+</div><div class="story post-story"><h2 id="三、设置docker镜像加速"><a href="#三、设置docker镜像加速" class="headerlink" title="三、设置docker镜像加速"></a>三、设置docker镜像加速</h2><p>如果已经在docker-machine create时指定了<code>--engine-registry-mirror</code>，那这一步可以省略<br>执行<code>docker-machine ssh default</code> 命令进入刚才创建的default虚拟机</p>
+<pre><code>$ docker-machine.exe ssh default
+                        ##         .
+                  ## ## ##        ==
+               ## ## ## ## ##    ===
+           /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;\___/ ===
+      ~~~ &#123;~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+           \______ o           __/
+             \    \         __/
+              \____\_______/
+ _                 _   ____     _            _
+| |__   ___   ___ | |_|___ \ __| | ___   ___| | _____ _ __
+| &#39;_ \ / _ \ / _ \| __| __) / _` |/ _ \ / __| |/ / _ \ &#39;__|
+| |_) | (_) | (_) | |_ / __/ (_| | (_) | (__|   &lt;  __/ |
+|_.__/ \___/ \___/ \__|_____\__,_|\___/ \___|_|\_\___|_|
+Boot2Docker version 18.03.0-ce, build HEAD : 404ee40 - Thu Mar 22 17:12:23 UTC 2018
+Docker version 18.03.0-ce, build 0520e24
+docker@default:~$
+</code></pre>
+<p>执行以下命令设置镜像地址</p>
+<pre><code>sudo sed -i &quot;s|EXTRA_ARGS=&#39;|EXTRA_ARGS=&#39;--registry-mirror=https://registry.docker-cn.com|g&quot; /var/lib/boot2docker/profile
+</code></pre>
+<p>此处镜像地址使用的是 <a target="_blank" rel="noopener" href="https://registry.docker-cn.com,可自行更换;/">https://registry.docker-cn.com，可自行更换；</a> 推荐使用阿里云镜像加速 ，点击访问链接地址获取 <a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
+<p>安装完后执行<code>exit</code>命令退出，使用<code>docker-machine restart default</code>重启虚拟机</p>
+</div><div class="story post-story"><h2 id="四、配置共享文件夹"><a href="#四、配置共享文件夹" class="headerlink" title="四、配置共享文件夹"></a>四、配置共享文件夹</h2><p>需要实时同步文件就需要配置VirtualBox的共享目录<br>可以执行<code>docker-machine mount [machine:][path] [mountpoint]</code>挂载指定目录，这里我们直接使用图形界面配置</p>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191901.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191901.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p>选择需要共享的文件夹，勾选自动挂载后就会将指定的Windows下的共享文件夹路径<code>D:\Workspace</code>自动挂载到虚拟机根目录下的<code>/workspace</code>，也就是上图中指定的挂载点</p>
+<p>保存后需要执行<code>docker-machine restart default</code>重启虚拟机使挂载生效</p>
+</div><div class="story post-story"><h2 id="五、在powershell或cmd中直接执行docker命令"><a href="#五、在powershell或cmd中直接执行docker命令" class="headerlink" title="五、在powershell或cmd中直接执行docker命令"></a>五、在powershell或cmd中直接执行docker命令</h2><p>使用DockerToolbox安装docker，docker 守护进程是运行在虚拟机中的，因此如果需要在powershell或cmd环境下执行docker命令，需要配置docker相关环境变量以便windows下的docker客户端程序可以连接虚拟机中的守护进程。</p>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191958.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627191958.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<ol>
+<li>如果虚拟机是使用Docker Quickstart Terminal自动执行创建的，一般会自动在windows环境变量中添加相关配置。</li>
+<li>手动执行命令创建的docker-machine虚拟机则需要自行添加环境变量，并重启命令窗口。在命令窗口中执行docker-machine env default命令可以查看需要配置的default虚拟机的环境变量。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627192031.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627192031.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<ol start="3">
+<li>删除虚拟机后再次创建新的虚拟机，ip地址会变化；使用docker-machine ls命令检查虚拟机的ip地址，确保与DOCKER_HOST配置的值对应</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627192224.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627192224.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p>配置正确的情况下，在powershell或者cmd中就可以直接执行docker命令了，执行docker version可以看到server端和client端的信息：</p>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627192334.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627192334.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p>存在多个虚拟机时，想要在多个虚拟机中切换，可以执行命令将当前session下的环境变量修改为指定虚拟机的配置。此操作只针对当前命令窗口会话生效。</p>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220627192355.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220627192355.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
 
+</div>
   </div>
   
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+        
+          
+          <div class="copyright license">
+            <div class="license-title">Windows下使用DockerToolbox</div>
+            <div class="license-link"><a href="http://jiangwennn.github.io/post/windows-dockertoolbox.html">http://jiangwennn.github.io/post/windows-dockertoolbox.html</a>
+            </div>
+            <div class="license-meta">
+              <div class="license-meta-item">
+                <div class="license-meta-title">本文作者</div>
+                <div class="license-meta-text">Jiangwennn</div>
+              </div>
+              <div class="license-meta-item">
+                <div class="license-meta-title">发布于</div>
+                <div class="license-meta-text">2021年6月27日</div>
+              </div>
+              
+              <div class="license-meta-item">
+                <div class="license-meta-title">更新于</div>
+                <div class="license-meta-text">2022年6月27日</div>
+              </div>
+              
+              
+              <div class="license-meta-item">
+                <div class="license-meta-title">许可协议</div>
+                <div class="license-meta-text"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank">CC BY-NC-SA 4.0</a></div>
+              </div>
+            </div>
+            <div class="license-statement">署名-非商业性使用-相同方式共享 4.0 国际。</div>
+          </div>
+        
+      
+      <!-- 打赏组件 -->
+      
+    </div>
   
   
     
@@ -2598,10 +2721,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-06-15T20:03:27+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-06-27T19:25:18+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年6月15日</p>
+    <p>更新于：2022年6月27日</p>
   </a>
 </div>
 
@@ -2609,6 +2732,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/docker/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>docker</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Windows/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Windows</p></a></div>
+  <span hidden itemprop="keywords">docker Windows</span>
+
 
         
       
@@ -2620,7 +2747,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiangwennn.github.io/about/index.html&title=about - Jiangwennn的学习笔记&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiangwennn.github.io/post/windows-dockertoolbox.html&title=Windows下使用DockerToolbox - Jiangwennn的学习笔记&summary="
           
           >
           
@@ -2632,7 +2759,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://jiangwennn.github.io/about/index.html&title=about - Jiangwennn的学习笔记&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://jiangwennn.github.io/post/windows-dockertoolbox.html&title=Windows下使用DockerToolbox - Jiangwennn的学习笔记&summary="
           
           >
           
@@ -2644,7 +2771,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiangwennn.github.io/about/index.html&title=about - Jiangwennn的学习笔记&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiangwennn.github.io/post/windows-dockertoolbox.html&title=Windows下使用DockerToolbox - Jiangwennn的学习笔记&summary="
           
           >
           
@@ -2675,6 +2802,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
   
+    <div class="prev-next">
+      
+        <a class='prev' href='/post/windows-scoop-switchhosts.html'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>使用Windows包管理器Scoop安装SwitchHosts</p>
+          <p class='content'>为当前Windows账户启用PowerShellSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+配置安装...</p>
+        </a>
+      
+      
+        <a class='next' href='/post/mysql-explain.html'>
+          <p class='title'>MySQL Explain命令用法<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一、介绍explain显示了mysql如何使用索引来处理select语句以及连接表。可以帮助选择更好的索引和写出更优化的查询语句。
+使用方法：在select语句前加上explain就可以了：
+m...</p>
+        </a>
+      
+    </div>
+  
   <!-- Custom Files postEnd begin-->
   
   <!-- Custom Files postEnd end-->
@@ -2686,7 +2831,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/about/index.html#comments">
+      <meta itemprop="discussionUrl" content="/post/windows-dockertoolbox.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2718,9 +2863,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8DockerToolbox%E5%8E%9F%E5%9B%A0"><span class="toc-text">一、使用DockerToolbox原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85DockerToolbox"><span class="toc-text">二、安装DockerToolbox</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%AE%BE%E7%BD%AEdocker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="toc-text">三、设置docker镜像加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%85%8D%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">四、配置共享文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%9C%A8powershell%E6%88%96cmd%E4%B8%AD%E7%9B%B4%E6%8E%A5%E6%89%A7%E8%A1%8Cdocker%E5%91%BD%E4%BB%A4"><span class="toc-text">五、在powershell或cmd中直接执行docker命令</span></a></li></ol>
+    </div>
+  </section>
 
   
 
@@ -2774,7 +2929,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4085,7 +4240,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"about","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://jiangwennn.github.io/about/index.html"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://jiangwennn.github.io/about/index.html","wordCount":0,"datePublished":"2022-06-15T12:03:27.000Z","dateModified":"2022-06-15T12:03:27.603Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io//post/windows-dockertoolbox.html","name":"Windows下使用DockerToolbox"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Windows下使用DockerToolbox","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://jiangwennn.github.io/post/windows-dockertoolbox.html"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://jiangwennn.github.io/post/windows-dockertoolbox.html","wordCount":0,"datePublished":"2021-06-27T11:12:34.000Z","dateModified":"2022-06-27T11:25:18.718Z","keywords":"docker,Windows","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
