@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://jiangwennn.github.io/post/mysql-explain.html"/>
+  <link rel="canonical" href="http://jiangwennn.github.io/post/fiddler.html"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,21 +32,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>MySQL Explain命令用法 - Jiangwennn的学习笔记</title>
-  <meta name="keywords" content="MySQL,null">
+  <title>fiddler抓包工具使用 - Jiangwennn的学习笔记</title>
+  <meta name="keywords" content="Windows,null">
   <meta desc name="description" content="不积跬步无以至千里 - Jiangwennn - Jiangwennn的学习笔记">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL Explain命令用法">
-<meta property="og:url" content="http://jiangwennn.github.io/post/mysql-explain.html">
+<meta property="og:title" content="fiddler抓包工具使用">
+<meta property="og:url" content="http://jiangwennn.github.io/post/fiddler.html">
 <meta property="og:site_name" content="Jiangwennn的学习笔记">
-<meta property="og:description" content="一、介绍explain显示了mysql如何使用索引来处理select语句以及连接表。可以帮助选择更好的索引和写出更优化的查询语句。 使用方法：在select语句前加上explain就可以了： mysql&gt; explain select user,host from user\G *************************** 1. row **********************">
+<meta property="og:description" content="Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for WindowsThe community-trusted free Windows-only tool that logs HTTP(s) network traffic.  安装FiddlerFiddler Classic是Windows">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2019-05-22T16:23:52.000Z">
-<meta property="article:modified_time" content="2022-06-26T12:50:40.204Z">
+<meta property="article:published_time" content="2022-07-06T11:22:14.000Z">
+<meta property="article:modified_time" content="2022-07-06T13:00:17.134Z">
 <meta property="article:author" content="Jiangwennn">
-<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2506,7 +2506,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/mysql-explain.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/fiddler.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2527,7 +2527,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        MySQL Explain命令用法
+        fiddler抓包工具使用
       </h1>
       <div class='new-meta-box'>
         
@@ -2548,10 +2548,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2019-05-23T00:23:52+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-07-06T19:22:14+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年5月23日</p>
+    <p>发布于：2022年7月6日</p>
   </a>
 </div>
 
@@ -2566,7 +2566,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <p>
       <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="lc-pv" data-title="MySQL Explain命令用法" data-path="/post/mysql-explain">
+      <span id="lc-pv" data-title="fiddler抓包工具使用" data-path="/post/fiddler">
         <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
       </span>
       
@@ -2588,378 +2588,51 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <div class="story post-story"><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p><code>explain</code>显示了mysql如何使用索引来处理<code>select</code>语句以及连接表。<br>可以帮助选择更好的索引和写出更优化的查询语句。</p>
-<p>使用方法：在<code>select</code>语句前加上<code>explain</code>就可以了：</p>
-<pre><code>mysql&gt; explain select user,host from user\G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: user
-   partitions: NULL
-         type: index
-possible_keys: NULL
-          key: PRIMARY
-      key_len: 276
-          ref: NULL
-         rows: 5
-     filtered: 100.00
-        Extra: Using index
-1 row in set, 1 warning (0.00 sec)
+    <blockquote>
+<p>Fiddler Classic:<br>The Original and Free Web Debugging Proxy Tool Exclusively for Windows<br>The community-trusted free Windows-only tool that logs HTTP(s) network traffic.</p>
+</blockquote>
+<div class="story post-story"><h2 id="安装Fiddler"><a href="#安装Fiddler" class="headerlink" title="安装Fiddler"></a>安装Fiddler</h2><p>Fiddler Classic是Windows上一款非常好用的http抓包工具<br>点击下载安装<a target="_blank" rel="noopener" href="https://www.telerik.com/download/fiddler">https://www.telerik.com/download/fiddler</a></p>
+<p>下载前需要填写调查问卷，随便填写即可点击下载<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706200716.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706200716.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="下载Fiddler"></p>
+</div><div class="story post-story"><h2 id="抓取https请求数据"><a href="#抓取https请求数据" class="headerlink" title="抓取https请求数据"></a>抓取https请求数据</h2><p>点击Tools-&gt;Options打开设置<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706201121.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706201121.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br>勾选图示选项，勾选确认后会弹出一些窗口，都点击<code>OK</code>即可<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706201302.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706201302.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+</div><div class="story post-story"><h2 id="模拟器抓包配置"><a href="#模拟器抓包配置" class="headerlink" title="模拟器抓包配置"></a>模拟器抓包配置</h2><p>需要抓取APP的http请求，一般需要安装安卓模拟器，可以下载逍遥安卓模拟器，注意需要使用安卓5.1版本</p>
+<h3 id="配置fiddler开启远程连接"><a href="#配置fiddler开启远程连接" class="headerlink" title="配置fiddler开启远程连接"></a>配置fiddler开启远程连接</h3><p>模拟器抓包需要先配置Fiddler允许远程连接，打开<code>Tools</code>-&gt;<code>options</code>-&gt;<code>connections</code>，点击勾选<code>Allow remote computers to connect</code><br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706204537.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706204537.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<h3 id="安装证书"><a href="#安装证书" class="headerlink" title="安装证书"></a>安装证书</h3><p>为了抓取模拟器上的https请求，需要在模拟器上安装证书，在模拟器上访问<code>http://宿主机IP:8888</code>打开Fiddler证书安装页面，点击图示链接下载并安装<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706204853.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706204853.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<h3 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a>配置代理</h3><p>在模拟器WiFi设置中配置代理，代理服务器填写宿主机IP，端口填写Fiddler的默认端口8888即可<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706205848.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706205848.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+</div><div class="story post-story"><h2 id="配置Fiddler显示IP"><a href="#配置Fiddler显示IP" class="headerlink" title="配置Fiddler显示IP"></a>配置Fiddler显示IP</h2><p>有时我们需要知道域名解析后对应的服务器IP地址，使用如下方法配置便可展示</p>
+<p>点击<code>FiddlerScript</code> Tab栏打开自定义脚本，搜索<code>Main()</code>方法，在图示位置添加代码</p>
+<pre><code class="java">FiddlerObject.UI.lvSessions.AddBoundColumn(&quot;ServerIP&quot;,120,&quot;X-HostIP&quot;);
 </code></pre>
-</div><div class="story post-story"><h2 id="二、准备工作"><a href="#二、准备工作" class="headerlink" title="二、准备工作"></a>二、准备工作</h2><hr>
-<p>为了接下来方便演示 <code>EXPLAIN</code> 的使用, 首先我们需要建立两个测试用的表, 并添加相应的数据:</p>
-<pre><code class="sql">CREATE TABLE `user_info` (
-  `id`   BIGINT(20)  NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(50) NOT NULL DEFAULT &#39;&#39;,
-  `age`  INT(11)              DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name_index` (`name`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706193248.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706193248.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="显示IP"></p>
+</div><div class="story post-story"><h2 id="配置Fiddler显示响应时长"><a href="#配置Fiddler显示响应时长" class="headerlink" title="配置Fiddler显示响应时长"></a>配置Fiddler显示响应时长</h2><p>点击<code>FiddlerScript</code> Tab栏打开自定义脚本，搜索<code>Handlers</code>，将以下代码粘贴至图示位置</p>
+<pre><code class="java">public function BeginRequestTime(oS: Session)
+&#123;
+    if (oS.Timers != null)
+    &#123;
+        return oS.Timers.ClientBeginRequest.ToString();
+    &#125;
+    return String.Empty;
+&#125;
 
-INSERT INTO user_info (name, age) VALUES (&#39;xys&#39;, 20);
-INSERT INTO user_info (name, age) VALUES (&#39;a&#39;, 21);
-INSERT INTO user_info (name, age) VALUES (&#39;b&#39;, 23);
-INSERT INTO user_info (name, age) VALUES (&#39;c&#39;, 50);
-INSERT INTO user_info (name, age) VALUES (&#39;d&#39;, 15);
-INSERT INTO user_info (name, age) VALUES (&#39;e&#39;, 20);
-INSERT INTO user_info (name, age) VALUES (&#39;f&#39;, 21);
-INSERT INTO user_info (name, age) VALUES (&#39;g&#39;, 23);
-INSERT INTO user_info (name, age) VALUES (&#39;h&#39;, 50);
-INSERT INTO user_info (name, age) VALUES (&#39;i&#39;, 15);
-
-CREATE TABLE `order_info` (
-  `id`           BIGINT(20)  NOT NULL AUTO_INCREMENT,
-  `user_id`      BIGINT(20)           DEFAULT NULL,
-  `product_name` VARCHAR(50) NOT NULL DEFAULT &#39;&#39;,
-  `productor`    VARCHAR(30)          DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_product_detail_index` (`user_id`, `product_name`, `productor`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
-
-INSERT INTO order_info (user_id, product_name, productor) VALUES (1, &#39;p1&#39;, &#39;WHH&#39;);
-INSERT INTO order_info (user_id, product_name, productor) VALUES (1, &#39;p2&#39;, &#39;WL&#39;);
-INSERT INTO order_info (user_id, product_name, productor) VALUES (1, &#39;p1&#39;, &#39;DX&#39;);
-INSERT INTO order_info (user_id, product_name, productor) VALUES (2, &#39;p1&#39;, &#39;WHH&#39;);
-INSERT INTO order_info (user_id, product_name, productor) VALUES (2, &#39;p5&#39;, &#39;WL&#39;);
-INSERT INTO order_info (user_id, product_name, productor) VALUES (3, &#39;p3&#39;, &#39;MA&#39;);
-INSERT INTO order_info (user_id, product_name, productor) VALUES (4, &#39;p1&#39;, &#39;WHH&#39;);
-INSERT INTO order_info (user_id, product_name, productor) VALUES (6, &#39;p1&#39;, &#39;WHH&#39;);
-INSERT INTO order_info (user_id, product_name, productor) VALUES (9, &#39;p8&#39;, &#39;TE&#39;);
+public static BindUIColumn(&quot;Time Taken&quot;) function CalcTimingCol(oS: Session)
+&#123;
+    var sResult = String.Empty;
+    if ((oS.Timers.ServerDoneResponse &gt; oS.Timers.ClientDoneRequest))
+    &#123;
+    sResult = (oS.Timers.ServerDoneResponse - oS.Timers.ClientDoneRequest).ToString();
+    &#125;
+    return sResult;
+&#125;
 </code></pre>
-</div><div class="story post-story"><h2 id="三、explain命令输出解析"><a href="#三、explain命令输出解析" class="headerlink" title="三、explain命令输出解析"></a>三、explain命令输出解析</h2><hr>
-<p>执行<code>explain</code>后，mysql打印出了许多信息：</p>
-<pre><code>mysql&gt; explain select * from user_info where id = 2\G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: user_info
-   partitions: NULL
-         type: const
-possible_keys: PRIMARY
-          key: PRIMARY
-      key_len: 8
-          ref: const
-         rows: 1
-     filtered: 100.00
-        Extra: NULL
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<p>各列含义如下：</p>
-<ul>
-<li><code>id</code>: SELECT 查询的标识符. 每个 SELECT 都会自动分配一个唯一的标识符.</li>
-<li><code>select_type</code>: SELECT 查询的类型.</li>
-<li><code>table</code>: 查询的是哪个表</li>
-<li><code>partitions</code>: 匹配的分区</li>
-<li><code>type</code>: join 类型</li>
-<li><code>possible_keys</code>: 此次查询中可能选用的索引</li>
-<li><code>key</code>: 此次查询中确切使用到的索引.</li>
-<li><code>ref</code>: 哪个字段或常数与 key 一起被使用</li>
-<li><code>rows</code>: 显示此查询一共扫描了多少行. 这个是一个估计值.</li>
-<li><code>filtered</code>: 表示此查询条件所过滤的数据的百分比</li>
-<li><code>extra</code>: 额外的信息</li>
-</ul>
-<h3 id="1-select-type"><a href="#1-select-type" class="headerlink" title="1. select_type"></a>1. select_type</h3><p><code>select_type</code> 表示了查询的类型, 它的常用取值有:</p>
-<ul>
-<li><code>SIMPLE</code>, 表示此查询不包含 UNION 查询或子查询</li>
-<li><code>PRIMARY</code>, 表示此查询是最外层的查询</li>
-<li><code>UNION</code>, 表示此查询是 UNION 的第二或随后的查询</li>
-<li><code>DEPENDENT UNION</code>, UNION 中的第二个或后面的查询语句, 取决于外面的查询</li>
-<li><code>UNION RESULT</code>, UNION 的结果</li>
-<li><code>SUBQUERY</code>, 子查询中的第一个 SELECT</li>
-<li><code>DEPENDENT SUBQUERY</code>: 子查询中的第一个 SELECT, 取决于外面的查询. 即子查询依赖于外层查询的结果.</li>
-</ul>
-<h3 id="2-table"><a href="#2-table" class="headerlink" title="2. table"></a>2. table</h3><p>&ensp;表示查询涉及的表或衍生表</p>
-<h3 id="3-type"><a href="#3-type" class="headerlink" title="3. type"></a>3. type</h3><p><code>type</code> 字段比较重要, 它提供了判断查询是否高效的重要依据依据. 通过 <code>type</code> 字段, 我们判断此次查询是 <strong>全表扫描</strong> 还是 <strong>索引扫描</strong> 等.</p>
-<p><strong>type常用类型</strong></p>
-<ul>
-<li><code>system</code>: 表中只有一条数据. 这个类型是特殊的 <code>const </code>类型.</li>
-<li><code>const</code>: 针对主键或唯一索引的等值查询扫描, 最多只返回一行数据. <code>const</code> 查询速度非常快, 因为它仅仅读取一次即可。例如下面的这个查询, 它使用了主键索引, 因此 <code>type</code> 就是 <code>const</code> 类型的.</li>
-</ul>
-<pre><code>mysql&gt; explain select * from user_info where id = 2\G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: user_info
-   partitions: NULL
-         type: const
-possible_keys: PRIMARY
-          key: PRIMARY
-      key_len: 8
-          ref: const
-         rows: 1
-     filtered: 100.00
-        Extra: NULL
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<ul>
-<li><code>eq_ref</code>: 此类型通常出现在多表的 <code>join</code> 查询, 表示对于前表的每一个结果, 都只能匹配到后表的一行结果. 并且查询的比较操作通常是 <code>=</code>, 查询效率较高. 例如：`</li>
-</ul>
-<pre><code>mysql&gt; EXPLAIN SELECT * FROM user_info, order_info WHERE user_info.id = order_info.user_id\G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: order_info
-   partitions: NULL
-         type: index
-possible_keys: user_product_detail_index
-          key: user_product_detail_index
-      key_len: 314
-          ref: NULL
-         rows: 9
-     filtered: 100.00
-        Extra: Using where; Using index
-*************************** 2. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: user_info
-   partitions: NULL
-         type: eq_ref
-possible_keys: PRIMARY
-          key: PRIMARY
-      key_len: 8
-          ref: test.order_info.user_id
-         rows: 1
-     filtered: 100.00
-        Extra: NULL
-2 rows in set, 1 warning (0.00 sec)
-</code></pre>
-<ul>
-<li><code>ref</code>: 此类型通常出现在多表的 <code>join</code> 查询, 针对于非唯一或非主键索引, 或者是使用了 最左前缀 规则索引的查询. </li>
-</ul>
-<pre><code>mysql&gt; EXPLAIN SELECT * FROM 
-    -&gt;         user_info, order_info 
-    -&gt;         WHERE user_info.id = order_info.user_id 
-    -&gt;         AND order_info.user_id = 5\G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: user_info
-   partitions: NULL
-         type: const
-possible_keys: PRIMARY
-          key: PRIMARY
-      key_len: 8
-          ref: const
-         rows: 1
-     filtered: 100.00
-        Extra: NULL
-*************************** 2. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: order_info
-   partitions: NULL
-         type: ref
-possible_keys: user_product_detail_index
-          key: user_product_detail_index
-      key_len: 9
-          ref: const
-         rows: 1
-     filtered: 100.00
-        Extra: Using index
-2 rows in set, 1 warning (0.01 sec)
-</code></pre>
-<ul>
-<li><code>range</code>: 表示使用索引范围查询, 通过索引字段范围获取表中部分数据记录. 这个类型通常出现在 <code>=</code>,<code> &lt;&gt;</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>IS NULL</code>, <code>&lt;=&gt;</code>, <code>BETWEEN</code>, <code>IN()</code> 操作中.<br>当 <code>type</code> 是 <code>range</code> 时, 那么 <code>EXPLAIN</code> 输出的 <code>ref</code> 字段为 <code>NULL</code>, 并且 <code>key_len</code> 字段是此次查询中使用到的索引的最长的那个,例如下面的例子就是一个范围查询:</li>
-</ul>
-<pre><code>mysql&gt; EXPLAIN SELECT *
-    -&gt;         FROM user_info
-    -&gt;         WHERE id BETWEEN 2 AND 8 \G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: user_info
-   partitions: NULL
-         type: range
-possible_keys: PRIMARY
-          key: PRIMARY
-      key_len: 8
-          ref: NULL
-         rows: 7
-     filtered: 100.00
-        Extra: Using where
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<ul>
-<li><code>index</code>: 表示全索引扫描(full index scan), 和 <code>ALL</code> 类型类似, 只不过 <code>ALL</code> 类型是全表扫描, 而 <code>index</code> 类型则仅仅扫描所有的索引, 而不扫描数据.<br><code>index</code> 类型通常出现在: 所要查询的数据直接在索引树中就可以获取到, 而不需要扫描数据. 当是这种情况时, <code>Extra</code> 字段 会显示 <code>Using index</code><br>例如：</li>
-</ul>
-<pre><code>mysql&gt; EXPLAIN SELECT name FROM  user_info \G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: user_info
-   partitions: NULL
-         type: index
-possible_keys: NULL
-          key: name_index
-      key_len: 152
-          ref: NULL
-         rows: 10
-     filtered: 100.00
-        Extra: Using index
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<p>上面的例子中, 我们查询的 <code>name</code> 字段恰好是一个索引, 因此我们直接从索引中获取数据就可以满足查询的需求了, 而不需要查询表中的数据. 因此这样的情况下, <code>type</code> 的值是 <code>index</code>, 并且 <code>Extra</code> 的值是 <code>Using index</code>.</p>
-<ul>
-<li><code>ALL</code>: 表示全表扫描, 这个类型的查询是性能最差的查询之一. 通常来说, 我们的查询不应该出现 <code>ALL</code> 类型的查询, 因为这样的查询在数据量大的情况下, 对数据库的性能是巨大的灾难. 如一个查询是 <code>ALL</code> 类型查询, 那么一般来说可以对相应的字段添加索引来避免.</li>
-</ul>
-<p>下面是一个全表扫描的例子, 可以看到, 在全表扫描时, <code>possible_keys</code> 和 <code>key</code> 字段都是 <code>NULL</code>, 表示没有使用到索引, 并且 <code>rows</code> 十分巨大, 因此整个查询效率是十分低下的.</p>
-<pre><code>mysql&gt; EXPLAIN SELECT age FROM  user_info WHERE age = 20 \G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: user_info
-   partitions: NULL
-         type: ALL
-possible_keys: NULL
-          key: NULL
-      key_len: NULL
-          ref: NULL
-         rows: 10
-     filtered: 10.00
-        Extra: Using where
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<p><strong>type 类型的性能比较</strong></p>
-<p>通常来说, 不同的 type 类型的性能关系如下:</p>
-<p><code>ALL</code> &lt; <code>index</code> &lt; <code>range ~ index_merge</code> &lt; <code>ref</code> &lt; <code>eq_ref</code> &lt; <code>const</code> &lt; <code>system</code></p>
-<p><code>ALL</code> 类型因为是全表扫描, 因此在相同的查询条件下, 它是速度最慢的.<br>而 <code>index</code> 类型的查询虽然不是全表扫描, 但是它扫描了所有的索引, 因此比 <code>ALL</code> 类型的稍快.</p>
-<p>后面的几种类型都是利用了索引来查询数据, 因此可以过滤部分或大部分数据, 因此查询效率就比较高了.</p>
-<h3 id="4-possible-keys"><a href="#4-possible-keys" class="headerlink" title="4. possible_keys"></a>4. possible_keys</h3><p><code>possible_keys</code> 表示 MySQL 在查询时, 能够使用到的索引.<br> 注意, 即使有些索引在 <code>possible_keys</code> 中出现, 但是并不表示此索引会真正地被 MySQL 使用到.<br>MySQL 在查询时具体使用了哪些索引, 由 <code>key</code> 字段决定.</p>
-<h3 id="5-key"><a href="#5-key" class="headerlink" title="5. key"></a>5. key</h3><p>此字段是 MySQL 在当前查询时所真正使用到的索引.</p>
-<h3 id="6-key-len"><a href="#6-key-len" class="headerlink" title="6. key_len"></a>6. key_len</h3><p>表示查询优化器使用了索引的字节数. 这个字段可以评估组合索引是否完全被使用, 或只有最左部分字段被使用到.<br><code>key_len</code> 的计算规则如下:</p>
-<ul>
-<li><p>字符串</p>
-<p><code>char(n)</code>: n 字节长度</p>
-<p><code>varchar(n)</code>: 如果是 utf8 编码, 则是 3 n + 2字节; 如果是 utf8mb4 编码, 则是 4 n + 2 字节.</p>
-</li>
-<li><p>数值类型:</p>
-<p><code>TINYINT</code>: 1字节</p>
-<p><code>SMALLINT</code>: 2字节</p>
-<p><code>MEDIUMINT</code>: 3字节</p>
-<p><code>INT</code>: 4字节</p>
-<p><code>BIGINT</code>: 8字节</p>
-</li>
-<li><p>时间类型</p>
-<p><code>DATE</code>: 3字节</p>
-<p><code>TIMESTAMP</code>: 4字节</p>
-<p><code>DATETIME</code>: 8字节</p>
-</li>
-<li><p>字段属性: <code>NULL</code> 属性 占用一个字节. 如果一个字段是 <code>NOT NULL</code> 的, 则没有此属性.</p>
-</li>
-</ul>
-<p>举例：</p>
-<pre><code>mysql&gt; EXPLAIN SELECT * FROM order_info 
-    -&gt; WHERE user_id &lt; 3 AND product_name = &#39;p1&#39; AND productor = &#39;WHH&#39; \G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: order_info
-   partitions: NULL
-         type: range
-possible_keys: user_product_detail_index
-          key: user_product_detail_index
-      key_len: 9
-          ref: NULL
-         rows: 5
-     filtered: 11.11
-        Extra: Using where; Using index
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<p>上面的例子是从表 <code>order_info</code> 中查询指定的内容, 而我们从此表的建表语句中可以知道, 表 <code>order_info</code> 有一个联合索引:</p>
-<pre><code>KEY `user_product_detail_index` (`user_id`, `product_name`, `productor`)
-</code></pre>
-<p>不过此查询语句 <code>WHERE user_id &lt; 3 AND product_name = &#39;p1&#39; AND productor = &#39;WHH&#39; </code>中, 因为先进行 <code>user_id</code> 的范围查询, 而根据 <strong>最左前缀匹配</strong> 原则, 当遇到范围查询时, 就停止索引的匹配, 因此实际上我们使用到的索引的字段只有 <code>user_id</code>, 因此在 <code>EXPLAIN</code> 中, 显示的 <code>key_len</code> 为 9. 因为 <code>user_id</code> 字段是 <code>BIGINT</code>, 占用 8 字节, 而 <code>NULL</code> 属性占用一个字节, 因此总共是 9 个字节. 若我们将<code>user_id</code> 字段改为 <code>BIGINT(20) NOT NULL DEFAULT &#39;0&#39;</code>, 则 <code>key_length</code> 应该是8.</p>
-<p>上面因为 <strong>最左前缀匹配</strong> 原则, 我们的查询仅仅使用到了联合索引的 <code>user_id</code> 字段, 因此效率不算高.</p>
-<p>看下一个例子：</p>
-<pre><code>mysql&gt; EXPLAIN SELECT * FROM order_info WHERE user_id = 1 AND product_name = &#39;p1&#39; \G;
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: order_info
-   partitions: NULL
-         type: ref
-possible_keys: user_product_detail_index
-          key: user_product_detail_index
-      key_len: 161
-          ref: const,const
-         rows: 2
-     filtered: 100.00
-        Extra: Using index
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<p>这次的查询中, 我们没有使用到范围查询, <code>key_len</code> 的值为 161. 为什么呢? 因为我们的查询条件 <code>WHERE user_id = 1 AND product_name = &#39;p1&#39;</code> 中, 仅仅使用到了联合索引中的前两个字段, 因此<code>keyLen(user_id)</code>+ <code>keyLen(product_name)</code> = 9 + 50 * 3 + 2 = 161</p>
-<h3 id="7-rows"><a href="#7-rows" class="headerlink" title="7. rows"></a>7. rows</h3><p><code>rows</code> 也是一个重要的字段.<br>MySQL 查询优化器根据统计信息, 估算 SQL 要查找到结果集需要扫描读取的数据行数.<br>这个值非常直观显示 SQL 的效率好坏, 原则上 <code>rows</code> 越少越好.</p>
-<h3 id="8-Extra"><a href="#8-Extra" class="headerlink" title="8. Extra"></a>8. Extra</h3><p><code>EXplain </code>中的很多额外的信息会在 <code>Extra </code>字段显示, 常见的有以下几种内容:</p>
-<ul>
-<li><code>Using filesort</code><br>当 <code>Extra</code> 中有 <code>Using filesort</code> 时, 表示 MySQL 需额外的排序操作, 不能通过索引顺序达到排序效果；一般有 <code>Using filesort</code>, 都建议优化去掉, 因为这样的查询 CPU 资源消耗大.</li>
-</ul>
-<p>例如下面的例子：</p>
-<pre><code>mysql&gt; EXPLAIN SELECT * FROM order_info ORDER BY product_name \G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: order_info
-   partitions: NULL
-         type: index
-possible_keys: NULL
-          key: user_product_detail_index
-      key_len: 253
-          ref: NULL
-         rows: 9
-     filtered: 100.00
-        Extra: Using index; Using filesort
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<p>我们的索引是</p>
-<pre><code>KEY `user_product_detail_index` (`user_id`, `product_name`, `productor`)
-</code></pre>
-<p>但是上面的查询中根据<code>product_name</code> 来排序, 因此不能使用索引进行优化, 进而会产生 <code>Using filesort</code>.<br>如果我们将排序依据改为 <code>ORDER BY user_id, product_name</code>, 那么就不会出现 <code>Using filesort</code> 了. 例如:</p>
-<pre><code>mysql&gt; EXPLAIN SELECT * FROM order_info ORDER BY user_id, product_name \G
-*************************** 1. row ***************************
-           id: 1
-  select_type: SIMPLE
-        table: order_info
-   partitions: NULL
-         type: index
-possible_keys: NULL
-          key: user_product_detail_index
-      key_len: 253
-          ref: NULL
-         rows: 9
-     filtered: 100.00
-        Extra: Using index
-1 row in set, 1 warning (0.00 sec)
-</code></pre>
-<ul>
-<li><p><code>Using index</code><br>“覆盖索引扫描”, 表示查询在索引树中就可查找所需数据, 不用扫描表数据文件, 往往说明性能不错</p>
-</li>
-<li><p><code>Using temporary</code><br>查询有使用临时表, 一般出现于排序, 分组和多表 <code>join</code> 的情况, 查询效率不高, 建议优化.</p>
-</li>
-</ul>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706195304.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706195304.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="显示响应时长"></p>
+</div><div class="story post-story"><h2 id="安装Willow"><a href="#安装Willow" class="headerlink" title="安装Willow"></a>安装Willow</h2><p>Willow是Fiddler的插件，可以实现一键切换hosts并高亮展示，非常方便<br>下载地址：<a target="_blank" rel="noopener" href="https://github.com/QzoneTouch/commonWidget/releases/download/1.5.2/WillowSetup-1.5.2.zip">https://github.com/QzoneTouch/commonWidget/releases/download/1.5.2/WillowSetup-1.5.2.zip</a></p>
+<p>下载完成后将压缩包内所有文件解压至Fiddler安装的根目录，重启Fiddler生效。</p>
+</div><div class="story post-story"><h2 id="部分站点提示https证书过期或显示灰色Tunnel-to-xxx-443"><a href="#部分站点提示https证书过期或显示灰色Tunnel-to-xxx-443" class="headerlink" title="部分站点提示https证书过期或显示灰色Tunnel to xxx:443"></a>部分站点提示https证书过期或显示灰色Tunnel to xxx:443</h2><p>这种情况一般是这台电脑安装使用Fiddler抓包已经很久了，Fiddler为指定站点颁发的证书过期了，此时只需要清除一下证书即可<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706202005.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706202005.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br>步骤如下：</p>
+<ol>
+<li>在<code>options-&gt;https</code>窗口中点击<code>actions</code>按钮</li>
+<li>点击<code>Reset All Certificates</code>清除证书</li>
+<li>点击<code>Open Windows Certificate Manager</code>打开Windows系统证书管理</li>
+<li>找到个人证书，将个人证书文件夹内由<code>DO_NOT_TRUST_FiddlerRoot</code>颁发的证书全部删除，可以执行<code>Ctrl + A</code>全选，再右键点击删除<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220706202325.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220706202325.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></li>
+</ol>
 
 </div>
   </div>
@@ -2969,26 +2642,6 @@ possible_keys: NULL
     <div class='footer'>
        <!-- 参考资料、相关资料等 -->
       
-        <div class='references'>
-          <section class='header'>
-            
-              <i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i>
-            
-            <span>参考资料</span>
-          </section>
-          <section class='body'>
-            <ul>
-              
-                <li>
-                  <a href="https://segmentfault.com/a/1190000008131735" rel="external nofollow noopener noreferrer" target="_blank">
-                  MySQL 性能优化神器 Explain 使用分析
-                  </a>
-                </li>
-              
-            </ul>
-          </section>
-        </div>
-      
        <!-- 相关文章 -->
       
       <!-- 版权声明组件 -->
@@ -2996,8 +2649,8 @@ possible_keys: NULL
         
           
           <div class="copyright license">
-            <div class="license-title">MySQL Explain命令用法</div>
-            <div class="license-link"><a href="http://jiangwennn.github.io/post/mysql-explain.html">http://jiangwennn.github.io/post/mysql-explain.html</a>
+            <div class="license-title">fiddler抓包工具使用</div>
+            <div class="license-link"><a href="http://jiangwennn.github.io/post/fiddler.html">http://jiangwennn.github.io/post/fiddler.html</a>
             </div>
             <div class="license-meta">
               <div class="license-meta-item">
@@ -3006,12 +2659,7 @@ possible_keys: NULL
               </div>
               <div class="license-meta-item">
                 <div class="license-meta-title">发布于</div>
-                <div class="license-meta-text">2019年5月23日</div>
-              </div>
-              
-              <div class="license-meta-item">
-                <div class="license-meta-title">更新于</div>
-                <div class="license-meta-text">2022年6月26日</div>
+                <div class="license-meta-text">2022年7月6日</div>
               </div>
               
               
@@ -3036,10 +2684,10 @@ possible_keys: NULL
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-06-26T20:50:40+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-07-06T21:00:17+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年6月26日</p>
+    <p>更新于：2022年7月6日</p>
   </a>
 </div>
 
@@ -3048,8 +2696,8 @@ possible_keys: NULL
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MySQL/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>MySQL</p></a></div>
-  <span hidden itemprop="keywords">MySQL</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Windows/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Windows</p></a></div>
+  <span hidden itemprop="keywords">Windows</span>
 
 
         
@@ -3062,7 +2710,7 @@ possible_keys: NULL
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiangwennn.github.io/post/mysql-explain.html&title=MySQL Explain命令用法 - Jiangwennn的学习笔记&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiangwennn.github.io/post/fiddler.html&title=fiddler抓包工具使用 - Jiangwennn的学习笔记&summary="
           
           >
           
@@ -3074,7 +2722,7 @@ possible_keys: NULL
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://jiangwennn.github.io/post/mysql-explain.html&title=MySQL Explain命令用法 - Jiangwennn的学习笔记&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://jiangwennn.github.io/post/fiddler.html&title=fiddler抓包工具使用 - Jiangwennn的学习笔记&summary="
           
           >
           
@@ -3086,7 +2734,7 @@ possible_keys: NULL
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiangwennn.github.io/post/mysql-explain.html&title=MySQL Explain命令用法 - Jiangwennn的学习笔记&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiangwennn.github.io/post/fiddler.html&title=fiddler抓包工具使用 - Jiangwennn的学习笔记&summary="
           
           >
           
@@ -3119,20 +2767,11 @@ possible_keys: NULL
   
     <div class="prev-next">
       
-        <a class='prev' href='/post/windows-dockertoolbox.html'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Windows下使用DockerToolbox</p>
-          <p class='content'>一、使用DockerToolbox原因
-Docker for Windows 基于 Hyperv，同时使用安卓模拟器需要开启Intel Virtual Technology(VT-x)，而Hyp...</p>
-        </a>
       
-      
-        <a class='next' href='/post/mysql-data-type.html'>
-          <p class='title'>MySQL数据类型与约束条件<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>一、MySQL的数据类型主要包括以下五大类：
-
-整数类型：BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、 INT、 BIG INT
-
-浮点数类型：FLOAT、DO...</p>
+        <a class='next' href='/post/windows-scoop-switchhosts.html'>
+          <p class='title'>使用Windows包管理器Scoop安装SwitchHosts<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>为当前Windows账户启用PowerShellSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+配置安装...</p>
         </a>
       
     </div>
@@ -3148,7 +2787,7 @@ Docker for Windows 基于 Hyperv，同时使用安卓模拟器需要开启Intel 
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/post/mysql-explain.html#comments">
+      <meta itemprop="discussionUrl" content="/post/fiddler.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -3190,7 +2829,7 @@ Docker for Windows 基于 Hyperv，同时使用安卓模拟器需要开启Intel 
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-text">一、介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">二、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81explain%E5%91%BD%E4%BB%A4%E8%BE%93%E5%87%BA%E8%A7%A3%E6%9E%90"><span class="toc-text">三、explain命令输出解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-select-type"><span class="toc-text">1. select_type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-table"><span class="toc-text">2. table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-type"><span class="toc-text">3. type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-possible-keys"><span class="toc-text">4. possible_keys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-key"><span class="toc-text">5. key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-key-len"><span class="toc-text">6. key_len</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-rows"><span class="toc-text">7. rows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Extra"><span class="toc-text">8. Extra</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Fiddler"><span class="toc-text">安装Fiddler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%93%E5%8F%96https%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">抓取https请求数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E5%99%A8%E6%8A%93%E5%8C%85%E9%85%8D%E7%BD%AE"><span class="toc-text">模拟器抓包配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEfiddler%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="toc-text">配置fiddler开启远程连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6"><span class="toc-text">安装证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="toc-text">配置代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEFiddler%E6%98%BE%E7%A4%BAIP"><span class="toc-text">配置Fiddler显示IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEFiddler%E6%98%BE%E7%A4%BA%E5%93%8D%E5%BA%94%E6%97%B6%E9%95%BF"><span class="toc-text">配置Fiddler显示响应时长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Willow"><span class="toc-text">安装Willow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E7%AB%99%E7%82%B9%E6%8F%90%E7%A4%BAhttps%E8%AF%81%E4%B9%A6%E8%BF%87%E6%9C%9F%E6%88%96%E6%98%BE%E7%A4%BA%E7%81%B0%E8%89%B2Tunnel-to-xxx-443"><span class="toc-text">部分站点提示https证书过期或显示灰色Tunnel to xxx:443</span></a></li></ol>
     </div>
   </section>
 
@@ -4557,7 +4196,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io//post/mysql-explain.html","name":"MySQL Explain命令用法"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"MySQL Explain命令用法","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://jiangwennn.github.io/post/mysql-explain.html"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://jiangwennn.github.io/post/mysql-explain.html","wordCount":0,"datePublished":"2019-05-22T16:23:52.000Z","dateModified":"2022-06-26T12:50:40.204Z","keywords":"MySQL","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io//post/fiddler.html","name":"fiddler抓包工具使用"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"fiddler抓包工具使用","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://jiangwennn.github.io/post/fiddler.html"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://jiangwennn.github.io/post/fiddler.html","wordCount":0,"datePublished":"2022-07-06T11:22:14.000Z","dateModified":"2022-07-06T13:00:17.134Z","keywords":"Windows","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
