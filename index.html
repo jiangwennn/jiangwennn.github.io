@@ -1797,7 +1797,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.4d580c89.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.1860c93d.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1657196339407),
+    lastupdate: new Date(1658128822029),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate","music"],
       for_post: ["toc"],
@@ -2530,9 +2530,69 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/cluster-autoscaler.html">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Jiangwennn的学习笔记">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Jiangwennn的学习笔记">
+    <meta itemprop="description" content="不积跬步无以至千里">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/post/cluster-autoscaler.html"  itemprop="url">
+        cluster-autoscaler k8s集群节点扩缩容
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+cluster-autoscaler 是一个k8s组件，它能够自动增加或减少集群的节点数量（自动扩容或自动缩容），使得所有的pod都能有node可以运行，合理的配置集群的节点资源。
+
+触发Node扩容的方式cluster-autoscaler（CA）每隔一段时间会进行扫描，当发现有Pod request的资源无法被现有的Node满足处于Pending状态，CA就会自动增加新的Node以便于...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2022-07-14T20:08:50+08:00">2022-07-14</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/post/cluster-autoscaler.html' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -3054,7 +3114,7 @@ CentOS的ISO...
 
 
     <div class='content'>
-      <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/MySQL/" style="font-size: 19px; color: #777">MySQL</a> <a href="/tags/PHP/" style="font-size: 19px; color: #777">PHP</a> <a href="/tags/Scoop/" style="font-size: 14px; color: #999">Scoop</a> <a href="/tags/Windows/" style="font-size: 24px; color: #555">Windows</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a>
+      <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/MySQL/" style="font-size: 19px; color: #777">MySQL</a> <a href="/tags/PHP/" style="font-size: 19px; color: #777">PHP</a> <a href="/tags/Scoop/" style="font-size: 14px; color: #999">Scoop</a> <a href="/tags/Windows/" style="font-size: 24px; color: #555">Windows</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/k8s/" style="font-size: 14px; color: #999">k8s</a>
     </div>
   </section>
 

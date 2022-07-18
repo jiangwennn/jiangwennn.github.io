@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.5.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://jiangwennn.github.io/archives/2022/"/>
+  
+  <link rel="canonical" href="http://jiangwennn.github.io/post/cluster-autoscaler.html"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,18 +32,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>归档：2022 - Jiangwennn的学习笔记</title>
-  <meta name="keywords" content="null">
+  <title>cluster-autoscaler k8s集群节点扩缩容 - Jiangwennn的学习笔记</title>
+  <meta name="keywords" content="k8s,null">
   <meta desc name="description" content="不积跬步无以至千里 - Jiangwennn - Jiangwennn的学习笔记">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jiangwennn的学习笔记">
-<meta property="og:url" content="http://jiangwennn.github.io/archives/2022/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cluster-autoscaler k8s集群节点扩缩容">
+<meta property="og:url" content="http://jiangwennn.github.io/post/cluster-autoscaler.html">
 <meta property="og:site_name" content="Jiangwennn的学习笔记">
-<meta property="og:description" content="不积跬步无以至千里">
+<meta property="og:description" content="cluster-autoscaler 是一个k8s组件，它能够自动增加或减少集群的节点数量（自动扩容或自动缩容），使得所有的pod都能有node可以运行，合理的配置集群的节点资源。  触发Node扩容的方式cluster-autoscaler（CA）每隔一段时间会进行扫描，当发现有Pod request的资源无法被现有的Node满足处于Pending状态，CA就会自动增加新的Node以便于Pod">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-07-14T12:08:50.000Z">
+<meta property="article:modified_time" content="2022-07-14T13:01:53.151Z">
 <meta property="article:author" content="Jiangwennn">
+<meta property="article:tag" content="k8s">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2222,7 +2225,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin begin-->
     
     <!-- Custom Files bodyBegin end-->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2445,7 +2448,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  search' style="display: ;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://raw.githubusercontent.com/jiangwennn/images/master/20220619221046.png"></div>
 
@@ -2502,23 +2505,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/cluster-autoscaler.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
@@ -2528,118 +2515,261 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="不积跬步无以至千里">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/cluster-autoscaler.html"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         cluster-autoscaler k8s集群节点扩缩容
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
+      </h1>
+      <div class='new-meta-box'>
         
-cluster-autoscaler 是一个k8s组件，它能够自动增加或减少集群的节点数量（自动扩容或自动缩容），使得所有的pod都能有node可以运行，合理的配置集群的节点资源。
-
-触发Node扩容的方式cluster-autoscaler（CA）每隔一段时间会进行扫描，当发现有Pod request的资源无法被现有的Node满足处于Pending状态，CA就会自动增加新的Node以便于...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-07-14T20:08:50+08:00">2022-07-14</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/post/cluster-autoscaler.html' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="https://jiangwennn.github.io" rel="nofollow">
+    <img itemprop="image" src="https://raw.githubusercontent.com/jiangwennn/images/master/20220619233343.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220619233343.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Jiangwennn</p>
+  </a>
 </div>
 
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-07-14T20:08:50+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年7月14日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="lc-pv" data-title="cluster-autoscaler k8s集群节点扩缩容" data-path="/post/cluster-autoscaler">
+        <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+      </span>
+      
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <blockquote>
+<p>cluster-autoscaler 是一个k8s组件，它能够自动增加或减少集群的节点数量（自动扩容或自动缩容），使得所有的pod都能有node可以运行，合理的配置集群的节点资源。</p>
+</blockquote>
+<div class="story post-story"><h2 id="触发Node扩容的方式"><a href="#触发Node扩容的方式" class="headerlink" title="触发Node扩容的方式"></a>触发Node扩容的方式</h2><p>cluster-autoscaler（CA）每隔一段时间会进行扫描，当发现有Pod request的资源无法被现有的Node满足处于Pending状态，CA就会自动增加新的Node以便于Pod能正常启动。这个扫描间隔默认情况下是10s，可以通过修改CA的启动命令选项<code>--scan-interval=10s</code>来设置为其他值</p>
+<p><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220714205418.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220714205418.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+</div><div class="story post-story"><h2 id="触发Node缩容的方式"><a href="#触发Node缩容的方式" class="headerlink" title="触发Node缩容的方式"></a>触发Node缩容的方式</h2><p>通过配置<code>--scale-down-utilization-threshold=0.7</code>启动命令选项可以控制CA在Node CPU利用率低于70%时将其纳入候选的缩容Node列表中，当Node处于缩容候选列表中超过一定时间后利用率未超过70%且Node上没有阻止缩容的Pod，节点就会被摘除，候选等待时长通过<code>--scale-down-unneeded-time=10m</code>选项配置，一般是十分钟。</p>
+</div><div class="story post-story"><h2 id="Pod阻止Node缩容的情况"><a href="#Pod阻止Node缩容的情况" class="headerlink" title="Pod阻止Node缩容的情况"></a>Pod阻止Node缩容的情况</h2><ul>
+<li>Pod 配置了 PodDisruptionBudget (PDB)</li>
+<li>kube-system Pod 默认不在 Node 上运行或者未配置 PDB</li>
+<li>Pod 不是通过 deployment, replica set, job, stateful set 等控制器创建的</li>
+<li>Pod 使用了本地存储local storage</li>
+<li>其他原因导致的 Pod 无法重新调度，如资源不足，其他 Node 无法满足 NodeSelector 或 Affinity 等</li>
+</ul>
+<p>如果遇到不明原因的扩缩容异常，通过查看cluster-autoscaler pod的标准输出日志可以看到较为详细的扩容与缩容判定过程，一般就可以定位到影响Node扩缩容的具体是什么问题了。<br><img src="https://raw.githubusercontent.com/jiangwennn/images/master/20220714205306.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220714205306.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+        
+          
+          <div class="copyright license">
+            <div class="license-title">cluster-autoscaler k8s集群节点扩缩容</div>
+            <div class="license-link"><a href="http://jiangwennn.github.io/post/cluster-autoscaler.html">http://jiangwennn.github.io/post/cluster-autoscaler.html</a>
+            </div>
+            <div class="license-meta">
+              <div class="license-meta-item">
+                <div class="license-meta-title">本文作者</div>
+                <div class="license-meta-text">Jiangwennn</div>
+              </div>
+              <div class="license-meta-item">
+                <div class="license-meta-title">发布于</div>
+                <div class="license-meta-text">2022年7月14日</div>
+              </div>
+              
+              
+              <div class="license-meta-item">
+                <div class="license-meta-title">许可协议</div>
+                <div class="license-meta-text"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank">CC BY-NC-SA 4.0</a></div>
+              </div>
+            </div>
+            <div class="license-statement">署名-非商业性使用-相同方式共享 4.0 国际。</div>
           </div>
         
       
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/fiddler.html">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-    <meta itemprop="description" content="不积跬步无以至千里">
-  </span>
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-07-14T21:01:53+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年7月14日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/k8s/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>k8s</p></a></div>
+  <span hidden itemprop="keywords">k8s</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiangwennn.github.io/post/cluster-autoscaler.html&title=cluster-autoscaler k8s集群节点扩缩容 - Jiangwennn的学习笔记&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://jiangwennn.github.io/post/cluster-autoscaler.html&title=cluster-autoscaler k8s集群节点扩缩容 - Jiangwennn的学习笔记&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiangwennn.github.io/post/cluster-autoscaler.html&title=cluster-autoscaler k8s集群节点扩缩容 - Jiangwennn的学习笔记&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/post/fiddler.html'>
+          <p class='title'>fiddler抓包工具使用<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for WindowsThe commun...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/post/cluster-autoscaler.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/fiddler.html"  itemprop="url">
-        fiddler抓包工具使用
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for WindowsThe community-trusted free Windows-only tool that logs HTTP(s) network traffic.
 
-安装FiddlerFiddler Classic是Wind...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-07-06T19:22:14+08:00">2022-07-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/post/fiddler.html' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+    <div id="layoutHelper-comments"></div>
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2648,149 +2778,52 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://raw.githubusercontent.com/jiangwennn/images/master/20220619233343.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>Jiangwennn</h2>
-        
-        
-        
-          <p><span id="jinrishici-sentence">不积跬步无以至千里</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:jiangwennn@qq.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/jiangwennn/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/MySQL/" style="font-size: 19px; color: #777">MySQL</a> <a href="/tags/PHP/" style="font-size: 19px; color: #777">PHP</a> <a href="/tags/Scoop/" style="font-size: 14px; color: #999">Scoop</a> <a href="/tags/Windows/" style="font-size: 24px; color: #555">Windows</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/k8s/" style="font-size: 14px; color: #999">k8s</a>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-
-  
-    
-    
-      
-
-  <section class='widget desktop mobile pjax music'>
-    
-
-    <div class='content'>
-      
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='484056997'
-      list-folded='true'>
-    </meting-js>
-  
-
-
-    </div>
-  </section>
-
-
     
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91Node%E6%89%A9%E5%AE%B9%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">触发Node扩容的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91Node%E7%BC%A9%E5%AE%B9%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">触发Node缩容的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pod%E9%98%BB%E6%AD%A2Node%E7%BC%A9%E5%AE%B9%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-text">Pod阻止Node缩容的情况</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2814,13 +2847,14 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2829,14 +2863,14 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -4131,7 +4165,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://jiangwennn.github.io/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io/archives/2022/","name":"2022年"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io//post/cluster-autoscaler.html","name":"cluster-autoscaler k8s集群节点扩缩容"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"cluster-autoscaler k8s集群节点扩缩容","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://jiangwennn.github.io/post/cluster-autoscaler.html"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://jiangwennn.github.io/post/cluster-autoscaler.html","wordCount":0,"datePublished":"2022-07-14T12:08:50.000Z","dateModified":"2022-07-14T13:01:53.151Z","keywords":"k8s","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
