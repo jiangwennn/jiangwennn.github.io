@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://jiangwennn.github.io/tags/windows/"/>
+  <link rel="canonical" href="http://jiangwennn.github.io/tags/ingress/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,13 +32,13 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：Windows - Jiangwennn的学习笔记</title>
+  <title>标签：ingress - Jiangwennn的学习笔记</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="不积跬步无以至千里 - Jiangwennn - Jiangwennn的学习笔记">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jiangwennn的学习笔记">
-<meta property="og:url" content="http://jiangwennn.github.io/tags/Windows/index.html">
+<meta property="og:url" content="http://jiangwennn.github.io/tags/ingress/index.html">
 <meta property="og:site_name" content="Jiangwennn的学习笔记">
 <meta property="og:description" content="不积跬步无以至千里">
 <meta property="og:locale" content="zh_CN">
@@ -2512,10 +2512,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
-          
-        
-          
-        
       
     
     
@@ -2523,7 +2519,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/fiddler.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/ingress-canary.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2541,18 +2537,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/fiddler.html"  itemprop="url">
-        fiddler抓包工具使用
+      <a href="/post/ingress-canary.html"  itemprop="url">
+        Ingress canary release 金丝雀发布
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        
-Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for WindowsThe community-trusted free Windows-only tool that logs HTTP(s) network traffic.
+        一些限制条件：
 
-安装FiddlerFiddler Classic是Wind...
+同一个Ingress rule只能配置一个canary
+在相同命名空间下配置canary，两个Ingress资源的名称可以不同
+在不同的命名空间下配置canary，两个Ingress资源的名称必须相同
+
+一些规则：
+
+配置了canary之后会导致除了canary对应rule之外的其他rule失效
+过个金丝雀规则可以同时生效，按优先顺序进行如下排序：canary-by-hea...
       
     
   </div>
@@ -2560,128 +2562,12 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-07-06T19:22:14+08:00">2022-07-06</time>
+        <time itemprop="dateCreated datePublished" datetime="2022-07-29T14:38:00+08:00">2022-07-29</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/fiddler.html' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/windows-scoop-switchhosts.html">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-    <meta itemprop="description" content="不积跬步无以至千里">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/windows-scoop-switchhosts.html"  itemprop="url">
-        使用Windows包管理器Scoop安装SwitchHosts
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        为当前Windows账户启用PowerShellSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-配置安装目录如果需要配置全局安装目录，需要PowerShell在管理员模式下运行可以使用 win + q搜索打开PowerShell管理员模式，也可以执行以下命令Start-Process PowerShel...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2021-08-29T11:03:01+08:00">2021-08-29</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/post/windows-scoop-switchhosts.html' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/windows-dockertoolbox.html">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-    <meta itemprop="description" content="不积跬步无以至千里">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/windows-dockertoolbox.html"  itemprop="url">
-        Windows下使用DockerToolbox
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        一、使用DockerToolbox原因
-Docker for Windows 基于 Hyperv，同时使用安卓模拟器需要开启Intel Virtual Technology(VT-x)，而Hyper-v与VT-x冲突，不可同时开启；
-Hyper-v是Windows 10 专业版才有的功能，家庭版虽然也能通过一些方法开启，但相对来说会比较麻烦
-
-
-DockerToolbox实际上是利用 Vir...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2021-06-27T19:12:34+08:00">2021-06-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/post/windows-dockertoolbox.html' itemprop="url">
+          <a class='readmore' href='/post/ingress-canary.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -4194,7 +4080,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://jiangwennn.github.io/tags/Windows/","name":"Windows"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://jiangwennn.github.io/tags/ingress/","name":"ingress"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
