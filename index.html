@@ -1797,7 +1797,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.4d580c89.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.1860c93d.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1698466776887),
+    lastupdate: new Date(1699233740784),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate","music"],
       for_post: ["toc"],
@@ -2540,6 +2540,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
@@ -2547,7 +2567,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/hyperf-v2-2-nacos-register.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/system-analysis-and-design.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2565,16 +2585,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/hyperf-v2-2-nacos-register.html"  itemprop="url">
-        hyperf框架RESTful风格服务nacos注册方式
+      <a href="/post/system-analysis-and-design.html"  itemprop="url">
+        系统分析与设计
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        问题Hyperf官方文档推荐的服务注册组件hyperf/service-governance默认使用类注解方式配置需要注册的服务，即一个类可以注册为一个服务，提供了json-rpc, grpc等集成封装，使用较为方便。但是不支持RESTful风格的RPC服务注册，这里提供一种解决方案。
-实现方式引入组件composer require hyperf/service-governance-na...
+        系统分析与设计结构化方法结构化分析 SA使用手段：数据流图、数据字典、结构化语言、判定表、判定树
+数据流图DFD方法基本元素：
+
+数据流（Data Flow）
+处理（Process）
+数据存储
+外部项
+
+数据字典是指对数据的数据项、数据结构、数据流、数据存储、处理逻辑等进行定义和描述，其目的是对数据流程图中的各个元素做出详细的说明。简而言之，数据字典是描述数据的信息集合，是对系统中使用的所有...
       
     
   </div>
@@ -2582,12 +2609,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-11-18T15:46:52+08:00">2022-11-18</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-11-02T22:50:09+08:00">2023-11-02</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/hyperf-v2-2-nacos-register.html' itemprop="url">
+          <a class='readmore' href='/post/system-analysis-and-design.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2603,7 +2630,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/aes-encrypt.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/software-engineering.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2621,21 +2648,29 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/aes-encrypt.html"  itemprop="url">
-        AES对称加密
+      <a href="/post/software-engineering.html"  itemprop="url">
+        软件工程
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        关于秘钥长度
-AES-128-CBC  =&gt; 16字节AES-192-CBC  =&gt; 24字节AES-256-CBC  =&gt; 32字节
-关于加密模式
-ECB 无需向量，生成密文不变
-CBC 需要向量
+        软件工程软件过程模型
+瀑布模型  特点：因果关系紧密相连，前一个阶段的输出结果，时候一个阶段的输入。
+  缺点：
+
+软件需求的完整性、正确性等很难确定，甚至是不可能和不现实的
+严格串行化，很长时间才能看到结果
+基于每个阶段一次性完全解决该阶段的工作，不太现实
 
 
+原型模型  阶段：原型开发阶段、目标软件开发阶段
+  按原型作用划分：抛弃型原型、演化型原型
+
+
+
+螺旋模型  在快速原型的基础上...
       
     
   </div>
@@ -2643,12 +2678,12 @@ CBC 需要向量
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-08-29T20:18:02+08:00">2022-08-29</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-11-02T19:41:36+08:00">2023-11-02</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/aes-encrypt.html' itemprop="url">
+          <a class='readmore' href='/post/software-engineering.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2664,7 +2699,7 @@ CBC 需要向量
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/ingress-canary.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/embedded-system-architecture.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2682,24 +2717,27 @@ CBC 需要向量
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/ingress-canary.html"  itemprop="url">
-        Ingress canary release 金丝雀发布
+      <a href="/post/embedded-system-architecture.html"  itemprop="url">
+        嵌入式系统架构
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        一些限制条件：
+        嵌入式系统架构嵌入式处理器
+微处理器 MPU
+微控制器 MCU
+信号处理器 DSP
+图形处理器 GPU
+片上系统 SOC
 
-同一个Ingress rule只能配置一个canary
-在相同命名空间下配置canary，两个Ingress资源的名称可以不同
-在不同的命名空间下配置canary，两个Ingress资源的名称必须相同
-
-一些规则：
-
-配置了canary之后会导致除了canary对应rule之外的其他rule失效
-过个金丝雀规则可以同时生效，按优先顺序进行如下排序：canary-by-hea...
+看门狗看门狗为嵌入式系统提供必需的系统恢复能力，在系统发生软件问题和程序飞跑时重新启动系统。
+基本原理：
+计数器自动计数，程序定期将其重置，如果系统卡死或者程序跑飞，计数器溢出，进入中断处理，在设定的时间间隔内，系统保留状态后复位重启。
+嵌入式操作系统内核架构
+宏内核
+...
       
     
   </div>
@@ -2707,12 +2745,12 @@ CBC 需要向量
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-07-29T14:38:00+08:00">2022-07-29</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-11-01T21:50:42+08:00">2023-11-01</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/ingress-canary.html' itemprop="url">
+          <a class='readmore' href='/post/embedded-system-architecture.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2728,7 +2766,7 @@ CBC 需要向量
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/bit-operation.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/service-oriented-architecture.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2746,51 +2784,25 @@ CBC 需要向量
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/bit-operation.html"  itemprop="url">
-        位运算符使用技巧
+      <a href="/post/service-oriented-architecture.html"  itemprop="url">
+        SOA面向服务的架构
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        位运算符概览
+        面向服务的体系结构SOA是一个组件模型，它将应用程序的不同功能单元（服务）通过这些服务之间定义良好的接口和契约联系起来，以一种统一和通用的方式进行交互。
+SOA与微服务的区别
+微服务相比于SOA更加精细
+微服务提供的接口更加通用化
+微服务更倾向于分布式去中心化的部署
 
+SOA的参考架构IBM的Websphere架构，分为六大类：
 
-符号
-描述
-运算规则
-
-
-
-&amp;
-与
-两个位都为1时，结果才为1
-
-
-|
-或
-两个位都为0时，结果才为0
-
-
-^
-异或
-两个位相同为0，相异为1
-
-
-~
-取反
-0变1，1变0
-
-
-&lt;&lt;
-左移
-各二进位全部左移若干位，高位丢弃，低位补0
-
-
-&gt;&gt;
-右移
-各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（...
+业务逻辑服务：业务逻辑
+控制服务：人、流程、信息的集成
+连接...
       
     
   </div>
@@ -2798,12 +2810,12 @@ CBC 需要向量
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-07-24T10:33:58+08:00">2022-07-24</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-11-01T21:34:34+08:00">2023-11-01</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/bit-operation.html' itemprop="url">
+          <a class='readmore' href='/post/service-oriented-architecture.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2819,7 +2831,7 @@ CBC 需要向量
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/cluster-autoscaler.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/cloud-native-architecture.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2837,18 +2849,38 @@ CBC 需要向量
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/cluster-autoscaler.html"  itemprop="url">
-        cluster-autoscaler k8s集群节点扩缩容
+      <a href="/post/cloud-native-architecture.html"  itemprop="url">
+        云原生架构
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        
-cluster-autoscaler 是一个k8s组件，它能够自动增加或减少集群的节点数量（自动扩容或自动缩容），使得所有的pod都能有node可以运行，合理的配置集群的节点资源。
+        云原生架构设计将云应用中的非业务代码部分进行最大化地剥离，轻量、敏捷、高度自动化。
+云原生的原则
+服务化原则
+弹性原则
+可观测原则
+韧性原则
+所有过程自动化原则
+零信任原则
+架构持续演进原则
 
-触发Node扩容的方式cluster-autoscaler（CA）每隔一段时间会进行扫描，当发现有Pod request的资源无法被现有的Node满足处于Pending状态，CA就会自动增加新的Node以便于...
+主要架构模式
+服务化架构模式
+DDD领域驱动设计
+TDD测试驱动开发
+容器化部署
+
+
+Mesh化架构模式
+服务网格
+中间件与业务代码进一步解耦
+
+
+Serverless模式
+适合事件驱动的数据计算任务...
       
     
   </div>
@@ -2856,12 +2888,12 @@ cluster-autoscaler 是一个k8s组件，它能够自动增加或减少集群的�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-07-14T20:08:50+08:00">2022-07-14</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-11-01T21:20:29+08:00">2023-11-01</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/cluster-autoscaler.html' itemprop="url">
+          <a class='readmore' href='/post/cloud-native-architecture.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2877,7 +2909,7 @@ cluster-autoscaler 是一个k8s组件，它能够自动增加或减少集群的�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/fiddler.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/layered-architechture.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2895,18 +2927,25 @@ cluster-autoscaler 是一个k8s组件，它能够自动增加或减少集群的�
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/fiddler.html"  itemprop="url">
-        fiddler抓包工具使用
+      <a href="/post/layered-architechture.html"  itemprop="url">
+        层次式架构设计
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        
-Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for WindowsThe community-trusted free Windows-only tool that logs HTTP(s) network traffic.
+        层次式架构设计层次式体系结构是一种常见的架构设计方法，它将系统组成为一个层次结构，每一层为上层服务，并作为下层的客户。大部分应用会分成：
 
-安装FiddlerFiddler Classic是Wind...
+表现层（展示层）
+中间层（业务层）
+访问层（持久层）
+数据层
+
+分层架构设计的核心和特点：关注点分离 
+注意点：
+
+容易成为污水池反模式（Architecture Sinkhole Anti-pattern）：请求流简单地穿过几个层，每个层里面基本没有做...
       
     
   </div>
@@ -2914,12 +2953,12 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-07-06T19:22:14+08:00">2022-07-06</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-10-31T21:12:32+08:00">2023-10-31</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/fiddler.html' itemprop="url">
+          <a class='readmore' href='/post/layered-architechture.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2935,7 +2974,7 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/windows-scoop-switchhosts.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/architecture-quality-analysis.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2953,16 +2992,42 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/windows-scoop-switchhosts.html"  itemprop="url">
-        使用Windows包管理器Scoop安装SwitchHosts
+      <a href="/post/architecture-quality-analysis.html"  itemprop="url">
+        系统质量属性与架构评估
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        为当前Windows账户启用PowerShellSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-配置安装目录如果需要配置全局安装目录，需要PowerShell在管理员模式下运行可以使用 win + q搜索打开PowerShell管理员模式，也可以执行以下命令Start-Process PowerShel...
+        系统质量属性与架构评估软件系统质量属性软件系统质量属性是一个系统的可测量或可测试的属性，基于软件系统的生命周期，可将软件系统的质量属性划分为：
+
+开发期质量属性
+
+易理解性
+可扩展性
+可重用性
+可测试性
+可维护性
+可移植性
+
+
+运行期质量属性
+
+性能
+安全性
+可伸缩性
+互操作性
+可靠性
+可用性
+鲁棒性
+
+
+
+关键质量属性及策略
+可用性
+错误检测：心跳、Ping/Echo、异常
+错误恢复：表决...
       
     
   </div>
@@ -2970,12 +3035,12 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2021-08-29T11:03:01+08:00">2021-08-29</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-10-29T10:11:29+08:00">2023-10-29</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/windows-scoop-switchhosts.html' itemprop="url">
+          <a class='readmore' href='/post/architecture-quality-analysis.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2991,7 +3056,7 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/windows-dockertoolbox.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/software-architecture-style.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -3009,20 +3074,23 @@ Fiddler Classic:The Original and Free Web Debugging Proxy Tool Exclusively for W
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/windows-dockertoolbox.html"  itemprop="url">
-        Windows下使用DockerToolbox
+      <a href="/post/software-architecture-style.html"  itemprop="url">
+        软件架构风格与信息系统架构
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        一、使用DockerToolbox原因
-Docker for Windows 基于 Hyperv，同时使用安卓模拟器需要开启Intel Virtual Technology(VT-x)，而Hyper-v与VT-x冲突，不可同时开启；
-Hyper-v是Windows 10 专业版才有的功能，家庭版虽然也能通过一些方法开启，但相对来说会比较麻烦
+        软件架构风格与信息系统架构软件体系结构设计的一个核心目标是重复的体系结构模式，即达到系统结构级的软件重用。软件体系结构风格描述是描述某一特定应用领域中系统组织方式和惯用模式。例如，如果某人将系统描述为“客户端/服务器模式”，那么不必给出设计细节，其他人就能立刻明白系统是如何组织和工作的。
+
+数据流体系结构风格
+批处理体系结构风格
+管道-过滤器体系结构风格
 
 
-DockerToolbox实际上是利用 Vir...
+调用/返回体系结构风格
+主程序/...
       
     
   </div>
@@ -3030,12 +3098,12 @@ DockerToolbox实际上是利用 Vir...
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2021-06-27T19:12:34+08:00">2021-06-27</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-10-28T16:09:36+08:00">2023-10-28</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/windows-dockertoolbox.html' itemprop="url">
+          <a class='readmore' href='/post/software-architecture-style.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -3051,7 +3119,7 @@ DockerToolbox实际上是利用 Vir...
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/mysql-explain.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/redis-cluster.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -3069,18 +3137,17 @@ DockerToolbox实际上是利用 Vir...
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/mysql-explain.html"  itemprop="url">
-        MySQL Explain命令用法
+      <a href="/post/redis-cluster.html"  itemprop="url">
+        redis高可用（主从、哨兵、集群）
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        一、介绍explain显示了mysql如何使用索引来处理select语句以及连接表。可以帮助选择更好的索引和写出更优化的查询语句。
-使用方法：在select语句前加上explain就可以了：
-mysql&gt; explain select user,host from user\G
-*************************** 1. row *******************...
+        Redis高可用高可用HA（High Availability）是系统架构中必须考虑的因素之一，是指通过各种架构设计方式和方法提高系统的可用性（减少系统不能提供服务的时间）。
+为了避免系统单点故障，一般都是通过部署多台机器来提供服务实现系统的高可用Redis高可用的三种模式：主从模式、哨兵模式、集群模式
+主从模式redis提供了Redis提供了复制(replication)功能，当一台red...
       
     
   </div>
@@ -3088,12 +3155,12 @@ mysql&gt; explain select user,host from user\G
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2019-05-23T00:23:52+08:00">2019-05-23</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-10-28T15:22:00+08:00">2023-10-28</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/mysql-explain.html' itemprop="url">
+          <a class='readmore' href='/post/redis-cluster.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -3109,7 +3176,7 @@ mysql&gt; explain select user,host from user\G
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/mysql-data-type.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/consistency-hash.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -3127,21 +3194,18 @@ mysql&gt; explain select user,host from user\G
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/mysql-data-type.html"  itemprop="url">
-        MySQL数据类型与约束条件
+      <a href="/post/consistency-hash.html"  itemprop="url">
+        数据分片算法：按数据范围分片、哈希分片、一致性哈希分片、哈希槽分片
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        一、MySQL的数据类型主要包括以下五大类：
-
-整数类型：BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、 INT、 BIG INT
-
-浮点数类型：FLOAT、DOUBLE、DECIMAL
-
-字符串类型：CHAR、VARCHAR、TINY TEXT、TEXT、MEDIUM TEXT、LONGTEXT、TINY BLOB、BLOB、MEDIUM BLOB、LONG...
+        数据分片数据分片就是按照一定的规则，将数据集划分成相互独立正交的数据子集，然后将数据子集分布到不同的节点上，通过设计合理的数据分片规则，可将系统中的数据分布在不同的物理数据库中，达到提升应用系统数据处理速度的目的。
+应用场景包括分库分表、缓存集群数据节点分片等。
+常见的数据分片算法有：按数据范围分片、哈希分片、一致性哈希分片、哈希槽分片
+按数据范围分片按数据范围分片实现比较简单，常见场景就是...
       
     
   </div>
@@ -3149,12 +3213,12 @@ mysql&gt; explain select user,host from user\G
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2019-05-14T22:50:49+08:00">2019-05-14</time>
+        <time itemprop="dateCreated datePublished" datetime="2023-10-28T12:25:35+08:00">2023-10-28</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/mysql-data-type.html' itemprop="url">
+          <a class='readmore' href='/post/consistency-hash.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -3175,7 +3239,7 @@ mysql&gt; explain select user,host from user\G
       <div class="prev-next">
         
         <p class="current">
-          1 / 2
+          1 / 3
         </p>
         
           <a class="next" rel="next" href="/page/2/">
@@ -3288,7 +3352,7 @@ mysql&gt; explain select user,host from user\G
 
 
     <div class='content'>
-      <a href="/tags/Hyperf/" style="font-size: 14px; color: #999">Hyperf</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/MySQL/" style="font-size: 19px; color: #777">MySQL</a> <a href="/tags/Nacos/" style="font-size: 14px; color: #999">Nacos</a> <a href="/tags/PHP/" style="font-size: 24px; color: #555">PHP</a> <a href="/tags/Scoop/" style="font-size: 14px; color: #999">Scoop</a> <a href="/tags/Windows/" style="font-size: 24px; color: #555">Windows</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/ingress/" style="font-size: 14px; color: #999">ingress</a> <a href="/tags/k8s/" style="font-size: 19px; color: #777">k8s</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">计算机基础</a>
+      <a href="/tags/Hyperf/" style="font-size: 14px; color: #999">Hyperf</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/MySQL/" style="font-size: 17.33px; color: #828282">MySQL</a> <a href="/tags/Nacos/" style="font-size: 14px; color: #999">Nacos</a> <a href="/tags/PHP/" style="font-size: 20.67px; color: #6c6c6c">PHP</a> <a href="/tags/Redis/" style="font-size: 17.33px; color: #828282">Redis</a> <a href="/tags/SOA/" style="font-size: 14px; color: #999">SOA</a> <a href="/tags/Scoop/" style="font-size: 14px; color: #999">Scoop</a> <a href="/tags/Windows/" style="font-size: 20.67px; color: #6c6c6c">Windows</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/ingress/" style="font-size: 14px; color: #999">ingress</a> <a href="/tags/k8s/" style="font-size: 17.33px; color: #828282">k8s</a> <a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" style="font-size: 14px; color: #999">云原生</a> <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 14px; color: #999">敏捷开发</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 24px; color: #555">架构</a> <a href="/tags/%E7%BB%93%E6%9E%84%E5%8C%96/" style="font-size: 14px; color: #999">结构化</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">计算机基础</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 14px; color: #999">软件工程</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 14px; color: #999">面向对象</a> <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/" style="font-size: 14px; color: #999">高可用</a>
     </div>
   </section>
 
