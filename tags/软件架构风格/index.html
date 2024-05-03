@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://jiangwennn.github.io/tags/redis/"/>
+  <link rel="canonical" href="http://jiangwennn.github.io/tags/软件架构风格/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,13 +32,13 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：Redis - Jiangwennn的学习笔记</title>
+  <title>标签：软件架构风格 - Jiangwennn的学习笔记</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="不积跬步无以至千里 - Jiangwennn - Jiangwennn的学习笔记">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jiangwennn的学习笔记">
-<meta property="og:url" content="http://jiangwennn.github.io/tags/Redis/index.html">
+<meta property="og:url" content="http://jiangwennn.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Jiangwennn的学习笔记">
 <meta property="og:description" content="不积跬步无以至千里">
 <meta property="og:locale" content="zh_CN">
@@ -2512,8 +2512,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
-          
-        
       
     
     
@@ -2521,7 +2519,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/redis-cluster.html">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2539,17 +2537,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/redis-cluster.html"  itemprop="url">
-        redis高可用（主从、哨兵、集群）
+      <a href="/post/typical-architecture-style-vulnerabilities.html"  itemprop="url">
+        典型软件架构的脆弱性分析
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        Redis高可用高可用HA（High Availability）是系统架构中必须考虑的因素之一，是指通过各种架构设计方式和方法提高系统的可用性（减少系统不能提供服务的时间）。
-为了避免系统单点故障，一般都是通过部署多台机器来提供服务实现系统的高可用Redis高可用的三种模式：主从模式、哨兵模式、集群模式
-主从模式redis提供了Redis提供了复制(replication)功能，当一台red...
+        典型软件架构的脆弱性分析软件脆弱性：软件设计脆弱性、软件结构脆弱性
+软件架构脆弱性是结构脆弱性的一种。
+分层架构
+层间的脆弱性。一旦某个底层发生错误，那么整个程序将会无法正常运行。
+层间通信的脆弱性。大量层间消息交互容易造成性能下降。
+
+C/S架构
+客户端软件的脆弱性。存在程序被分析逆向，数据被截取的安全隐患。
+网络开放性的脆弱性。客户端可以直接读取服务器端的数据。
+网络协议的脆弱性。数据分...
       
     
   </div>
@@ -2557,70 +2562,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2023-10-28T15:22:00+08:00">2023-10-28</time>
+        <time itemprop="dateCreated datePublished" datetime="2024-04-22T19:34:45+08:00">2024-04-22</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/post/redis-cluster.html' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/consistency-hash.html">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-    <meta itemprop="description" content="不积跬步无以至千里">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/consistency-hash.html"  itemprop="url">
-        数据分片算法：按数据范围分片、哈希分片、一致性哈希分片、哈希槽分片
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        数据分片数据分片就是按照一定的规则，将数据集划分成相互独立正交的数据子集，然后将数据子集分布到不同的节点上，通过设计合理的数据分片规则，可将系统中的数据分布在不同的物理数据库中，达到提升应用系统数据处理速度的目的。
-应用场景包括分库分表、缓存集群数据节点分片等。
-常见的数据分片算法有：按数据范围分片、哈希分片、一致性哈希分片、哈希槽分片
-按数据范围分片按数据范围分片实现比较简单，常见场景就是...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-10-28T12:25:35+08:00">2023-10-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/post/consistency-hash.html' itemprop="url">
+          <a class='readmore' href='/post/typical-architecture-style-vulnerabilities.html' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -4133,7 +4080,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://jiangwennn.github.io/tags/Redis/","name":"Redis"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://jiangwennn.github.io/tags/软件架构风格/","name":"软件架构风格"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

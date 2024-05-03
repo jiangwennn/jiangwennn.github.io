@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.5.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://jiangwennn.github.io/tags/redis/"/>
+  
+  <link rel="canonical" href="http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,18 +32,22 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：Redis - Jiangwennn的学习笔记</title>
-  <meta name="keywords" content="null">
+  <title>典型软件架构的脆弱性分析 - Jiangwennn的学习笔记</title>
+  <meta name="keywords" content="架构,软件架构风格,null">
   <meta desc name="description" content="不积跬步无以至千里 - Jiangwennn - Jiangwennn的学习笔记">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jiangwennn的学习笔记">
-<meta property="og:url" content="http://jiangwennn.github.io/tags/Redis/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="典型软件架构的脆弱性分析">
+<meta property="og:url" content="http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html">
 <meta property="og:site_name" content="Jiangwennn的学习笔记">
-<meta property="og:description" content="不积跬步无以至千里">
+<meta property="og:description" content="典型软件架构的脆弱性分析软件脆弱性：软件设计脆弱性、软件结构脆弱性 软件架构脆弱性是结构脆弱性的一种。 分层架构 层间的脆弱性。一旦某个底层发生错误，那么整个程序将会无法正常运行。 层间通信的脆弱性。大量层间消息交互容易造成性能下降。  C&#x2F;S架构 客户端软件的脆弱性。存在程序被分析逆向，数据被截取的安全隐患。 网络开放性的脆弱性。客户端可以直接读取服务器端的数据。 网络协议的脆弱性。数据分布特性">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2024-04-22T11:34:45.000Z">
+<meta property="article:modified_time" content="2024-04-22T12:00:01.919Z">
 <meta property="article:author" content="Jiangwennn">
+<meta property="article:tag" content="架构">
+<meta property="article:tag" content="软件架构风格">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2445,7 +2449,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  search' style="display: none;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://raw.githubusercontent.com/jiangwennn/images/master/20220619221046.png"></div>
 
@@ -2501,27 +2505,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/redis-cluster.html">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Jiangwennn的学习笔记">
   </span>
@@ -2530,118 +2516,289 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="不积跬步无以至千里">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/redis-cluster.html"  itemprop="url">
-        redis高可用（主从、哨兵、集群）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        Redis高可用高可用HA（High Availability）是系统架构中必须考虑的因素之一，是指通过各种架构设计方式和方法提高系统的可用性（减少系统不能提供服务的时间）。
-为了避免系统单点故障，一般都是通过部署多台机器来提供服务实现系统的高可用Redis高可用的三种模式：主从模式、哨兵模式、集群模式
-主从模式redis提供了Redis提供了复制(replication)功能，当一台red...
-      
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      <h1 class="title" itemprop="name headline">
+        典型软件架构的脆弱性分析
+      </h1>
+      <div class='new-meta-box'>
         
-        <time itemprop="dateCreated datePublished" datetime="2023-10-28T15:22:00+08:00">2023-10-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/post/redis-cluster.html' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="https://jiangwennn.github.io" rel="nofollow">
+    <img itemprop="image" src="https://raw.githubusercontent.com/jiangwennn/images/master/20220619233343.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/jiangwennn/images/master/20220619233343.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Jiangwennn</p>
+  </a>
 </div>
 
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-04-22T19:34:45+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2024年4月22日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="lc-pv" data-title="典型软件架构的脆弱性分析" data-path="/post/typical-architecture-style-vulnerabilities">
+        <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+      </span>
+      
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="典型软件架构的脆弱性分析"><a href="#典型软件架构的脆弱性分析" class="headerlink" title="典型软件架构的脆弱性分析"></a>典型软件架构的脆弱性分析</h1><p>软件脆弱性：软件设计脆弱性、软件结构脆弱性</p>
+<p>软件架构脆弱性是结构脆弱性的一种。</p>
+<div class="story post-story"><h2 id="分层架构"><a href="#分层架构" class="headerlink" title="分层架构"></a>分层架构</h2><ol>
+<li>层间的脆弱性。一旦某个底层发生错误，那么整个程序将会无法正常运行。</li>
+<li>层间通信的脆弱性。大量层间消息交互容易造成性能下降。</li>
+</ol>
+</div><div class="story post-story"><h2 id="C-S架构"><a href="#C-S架构" class="headerlink" title="C/S架构"></a>C/S架构</h2><ol>
+<li>客户端软件的脆弱性。存在程序被分析逆向，数据被截取的安全隐患。</li>
+<li>网络开放性的脆弱性。客户端可以直接读取服务器端的数据。</li>
+<li>网络协议的脆弱性。数据分布特性，客户端遭受灾害导致数据丢失。</li>
+</ol>
+</div><div class="story post-story"><h2 id="B-S架构"><a href="#B-S架构" class="headerlink" title="B/S架构"></a>B/S架构</h2><ol>
+<li>若使用HTTP协议，B/S架构相比C/S架构更容易被入侵。</li>
+</ol>
+</div><div class="story post-story"><h2 id="事件驱动架构-EDA"><a href="#事件驱动架构-EDA" class="headerlink" title="事件驱动架构 EDA"></a>事件驱动架构 EDA</h2><ol>
+<li>组件的脆弱性。组件削弱了自身对系统的控制力，无法知晓其他组件执行情况。</li>
+<li>组件间数据交换的脆弱性。当大量数据需要在组件间传递时，保证有效传递比较困难。</li>
+<li>组件间逻辑关系的脆弱性。组件间逻辑关系复杂。</li>
+<li>事件驱动容易进入死循环。</li>
+<li>高并发的脆弱性。</li>
+<li>固定流程的脆弱性。</li>
+</ol>
+</div><div class="story post-story"><h2 id="MVC架构"><a href="#MVC架构" class="headerlink" title="MVC架构"></a>MVC架构</h2><ol>
+<li>MVC架构的复杂性带来脆弱性。</li>
+<li>视图与控制器间紧密连接的脆弱性。没有控制器，视图应用很有限。</li>
+<li>视图对模型数据的低效率访问的脆弱性。模型操作接口不同，视图可能需要多次访问以获得足够显示数据。</li>
+</ol>
+</div><div class="story post-story"><h2 id="微内核架构"><a href="#微内核架构" class="headerlink" title="微内核架构"></a>微内核架构</h2><ol>
+<li>微内核架构难以进行良好的整体优化。</li>
+<li>微内核系统的进程间通信开销比较大。</li>
+<li>通信损失率高。</li>
+</ol>
+</div><div class="story post-story"><h2 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h2><ol>
+<li>开发人员需要处理分布式系统的复杂结构。</li>
+<li>开发人员要设计服务之间的通信机制。</li>
+<li>服务管理的复杂性，开发团队需要全局统筹。</li>
+</ol>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+        
+          
+          <div class="copyright license">
+            <div class="license-title">典型软件架构的脆弱性分析</div>
+            <div class="license-link"><a href="http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html">http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html</a>
+            </div>
+            <div class="license-meta">
+              <div class="license-meta-item">
+                <div class="license-meta-title">本文作者</div>
+                <div class="license-meta-text">Jiangwennn</div>
+              </div>
+              <div class="license-meta-item">
+                <div class="license-meta-title">发布于</div>
+                <div class="license-meta-text">2024年4月22日</div>
+              </div>
+              
+              
+              <div class="license-meta-item">
+                <div class="license-meta-title">许可协议</div>
+                <div class="license-meta-text"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank">CC BY-NC-SA 4.0</a></div>
+              </div>
+            </div>
+            <div class="license-statement">署名-非商业性使用-相同方式共享 4.0 国际。</div>
           </div>
         
       
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://jiangwennn.github.io/post/consistency-hash.html">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Jiangwennn的学习笔记">
-    <meta itemprop="description" content="不积跬步无以至千里">
-  </span>
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-04-22T20:00:01+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2024年4月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%B6%E6%9E%84/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>架构</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>软件架构风格</p></a></div>
+  <span hidden itemprop="keywords">架构 软件架构风格</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html&title=典型软件架构的脆弱性分析 - Jiangwennn的学习笔记&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html&title=典型软件架构的脆弱性分析 - Jiangwennn的学习笔记&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html&title=典型软件架构的脆弱性分析 - Jiangwennn的学习笔记&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/post/system-analysis-and-design.html'>
+          <p class='title'>系统分析与设计<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>系统分析与设计结构化方法结构化分析 SA使用手段：数据流图、数据字典、结构化语言、判定表、判定树
+数据流图DFD方法基本元素：
+
+数据流（Data Flow）
+处理（Process）
+数据存储
+...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/post/typical-architecture-style-vulnerabilities.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/consistency-hash.html"  itemprop="url">
-        数据分片算法：按数据范围分片、哈希分片、一致性哈希分片、哈希槽分片
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        数据分片数据分片就是按照一定的规则，将数据集划分成相互独立正交的数据子集，然后将数据子集分布到不同的节点上，通过设计合理的数据分片规则，可将系统中的数据分布在不同的物理数据库中，达到提升应用系统数据处理速度的目的。
-应用场景包括分库分表、缓存集群数据节点分片等。
-常见的数据分片算法有：按数据范围分片、哈希分片、一致性哈希分片、哈希槽分片
-按数据范围分片按数据范围分片实现比较简单，常见场景就是...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-10-28T12:25:35+08:00">2023-10-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/post/consistency-hash.html' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2650,149 +2807,52 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://raw.githubusercontent.com/jiangwennn/images/master/20220619233343.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>Jiangwennn</h2>
-        
-        
-        
-          <p><span id="jinrishici-sentence">不积跬步无以至千里</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:jiangwennn@qq.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/jiangwennn/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Hyperf/" style="font-size: 14px; color: #999">Hyperf</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/MySQL/" style="font-size: 17.33px; color: #828282">MySQL</a> <a href="/tags/Nacos/" style="font-size: 14px; color: #999">Nacos</a> <a href="/tags/PHP/" style="font-size: 20.67px; color: #6c6c6c">PHP</a> <a href="/tags/Redis/" style="font-size: 17.33px; color: #828282">Redis</a> <a href="/tags/SOA/" style="font-size: 14px; color: #999">SOA</a> <a href="/tags/Scoop/" style="font-size: 14px; color: #999">Scoop</a> <a href="/tags/Windows/" style="font-size: 20.67px; color: #6c6c6c">Windows</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/ingress/" style="font-size: 14px; color: #999">ingress</a> <a href="/tags/k8s/" style="font-size: 17.33px; color: #828282">k8s</a> <a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" style="font-size: 14px; color: #999">云原生</a> <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 14px; color: #999">敏捷开发</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 24px; color: #555">架构</a> <a href="/tags/%E7%BB%93%E6%9E%84%E5%8C%96/" style="font-size: 14px; color: #999">结构化</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">计算机基础</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 14px; color: #999">软件工程</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/" style="font-size: 14px; color: #999">软件架构风格</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 14px; color: #999">面向对象</a> <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/" style="font-size: 14px; color: #999">高可用</a>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-
-  
-    
-    
-      
-
-  <section class='widget desktop mobile pjax music'>
-    
-
-    <div class='content'>
-      
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='song'
-      id='484056997'
-      list-folded='true'>
-    </meting-js>
-  
-
-
-    </div>
-  </section>
-
-
     
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="toc-text">分层架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-S%E6%9E%B6%E6%9E%84"><span class="toc-text">C&#x2F;S架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-S%E6%9E%B6%E6%9E%84"><span class="toc-text">B&#x2F;S架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%9E%B6%E6%9E%84-EDA"><span class="toc-text">事件驱动架构 EDA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVC%E6%9E%B6%E6%9E%84"><span class="toc-text">MVC架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84"><span class="toc-text">微内核架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="toc-text">微服务架构</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2816,13 +2876,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4133,7 +4194,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://jiangwennn.github.io/tags/Redis/","name":"Redis"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","sameAs":["https://github.com/volantis-x"],"description":"不积跬步无以至千里"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://jiangwennn.github.io/","name":"Jiangwennn的学习笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"http://jiangwennn.github.io//post/typical-architecture-style-vulnerabilities.html","name":"典型软件架构的脆弱性分析"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","keywords":null,"description":"不积跬步无以至千里","author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/","description":"不积跬步无以至千里"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","url":"http://jiangwennn.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://jiangwennn.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"典型软件架构的脆弱性分析","description":"不积跬步无以至千里","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html"},"author":{"@type":"Person","name":"Jiangwennn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://jiangwennn.github.io/"},"publisher":{"@type":"Organization","name":"Jiangwennn的学习笔记","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://jiangwennn.github.io/post/typical-architecture-style-vulnerabilities.html","wordCount":0,"datePublished":"2024-04-22T11:34:45.000Z","dateModified":"2024-04-22T12:00:01.919Z","keywords":"架构,软件架构风格","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
