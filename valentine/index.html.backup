@@ -301,17 +301,8 @@
              */
             explode() {
                 const sparks = [];
-                // 增加粒子数量,让形状更明显
-                const particleCount = Math.floor(random(80, 150));
-                // 增加心形和浪漫形状的出现概率
-                const explosionType = randomChoice([
-                    'heart', 'heart', 'heart',  // 心形概率提高到 30%
-                    'doubleHeart', 'doubleHeart',  // 双心形 20%
-                    'rose', 'rose',  // 玫瑰花瓣形 20%
-                    'star',  // 五角星 10%
-                    'circle',  // 圆形 10%
-                    'ring'  // 环形 10%
-                ]);
+                const particleCount = Math.floor(random(50, 100));
+                const explosionType = randomChoice(['circle', 'heart', 'ring', 'random']);
 
                 for (let i = 0; i < particleCount; i++) {
                     let angle, speed;
@@ -321,42 +312,12 @@
                         angle = (Math.PI * 2 * i) / particleCount;
                         speed = random(2, 6);
                     } else if (explosionType === 'heart') {
-                        // 心形爆炸 - 使用更密集的粒子
+                        // 心形爆炸
                         const t = (i / particleCount) * Math.PI * 2;
                         const heartX = 16 * Math.pow(Math.sin(t), 3);
                         const heartY = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
                         angle = Math.atan2(heartY, heartX);
-                        speed = random(1.5, 3.5);
-                    } else if (explosionType === 'doubleHeart') {
-                        // 双心形爆炸 - 两个心形交织
-                        const isLeftHeart = i % 2 === 0;
-                        const t = (Math.floor(i / 2) / (particleCount / 2)) * Math.PI * 2;
-                        const heartX = 16 * Math.pow(Math.sin(t), 3);
-                        const heartY = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-                        // 左右偏移
-                        const offsetX = isLeftHeart ? heartX - 15 : heartX + 15;
-                        angle = Math.atan2(heartY, offsetX);
-                        speed = random(1.5, 3);
-                    } else if (explosionType === 'rose') {
-                        // 玫瑰花瓣形 (Polar Rose: r = a * cos(k * θ))
-                        const k = 5; // 5瓣玫瑰
-                        const t = (i / particleCount) * Math.PI * 2;
-                        const r = 20 * Math.cos(k * t);
-                        const roseX = r * Math.cos(t);
-                        const roseY = r * Math.sin(t);
-                        angle = Math.atan2(roseY, roseX);
-                        speed = random(2, 4);
-                    } else if (explosionType === 'star') {
-                        // 五角星形
-                        const starPoints = 5;
-                        const pointIndex = Math.floor(i / (particleCount / (starPoints * 2)));
-                        const isOuter = pointIndex % 2 === 0;
-                        const t = (pointIndex / (starPoints * 2)) * Math.PI * 2 - Math.PI / 2;
-                        const radius = isOuter ? 1 : 0.4;
-                        const starX = radius * Math.cos(t);
-                        const starY = radius * Math.sin(t);
-                        angle = Math.atan2(starY, starX);
-                        speed = random(3, 6);
+                        speed = random(1, 3);
                     } else if (explosionType === 'ring') {
                         // 环形爆炸
                         angle = (Math.PI * 2 * i) / particleCount;
@@ -380,16 +341,13 @@
             }
         }
 
-        // ==================== 烟花火花粒子 (带3D效果) ====================
+        // ==================== 烟花火花粒子 ====================
 
         class SparkParticle extends Particle {
             constructor(x, y, angle, speed, color) {
                 super(x, y, color);
                 this.vx = Math.cos(angle) * speed;
                 this.vy = Math.sin(angle) * speed;
-                // 添加 z 轴深度 (范围: -100 到 100)
-                this.z = random(-50, 50);
-                this.vz = random(-2, 2);
                 this.gravity = 0.05;
                 this.friction = 0.98;
                 this.life = 100;
@@ -397,10 +355,9 @@
             }
 
             update() {
-                // 应用速度 (3D)
+                // 应用速度
                 this.x += this.vx;
                 this.y += this.vy;
-                this.z += this.vz;
 
                 // 应用重力
                 this.vy += this.gravity;
@@ -408,7 +365,6 @@
                 // 应用摩擦力
                 this.vx *= this.friction;
                 this.vy *= this.friction;
-                this.vz *= this.friction;
 
                 // 减少生命值
                 this.life--;
@@ -421,27 +377,11 @@
             }
 
             draw(ctx) {
-                // 3D 投影计算
-                const focalLength = 300;
-                const scale = focalLength / (focalLength + this.z);
-                const screenX = this.x;
-                const screenY = this.y;
-                const size = 2 * scale;
-                const depth3DAlpha = this.alpha * Math.max(0.3, scale);
-
                 ctx.save();
-                ctx.globalAlpha = depth3DAlpha;
+                ctx.globalAlpha = this.alpha;
                 ctx.fillStyle = this.color;
-
-                // 根据深度添加模糊效果
-                if (this.z > 20) {
-                    ctx.filter = 'blur(1px)';
-                } else if (this.z < -20) {
-                    ctx.filter = 'blur(0.5px)';
-                }
-
                 ctx.beginPath();
-                ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.restore();
             }
@@ -519,433 +459,6 @@
             }
         }
 
-        // ==================== 霓虹灯文字效果 ====================
-
-        class NeonText {
-            constructor(x, y, text, colors) {
-                this.x = x;
-                this.y = y;
-                this.text = text;
-                this.colors = colors;
-                this.alpha = 0;
-                this.scale = 0.5;
-                this.rotation = random(-0.2, 0.2);
-                this.phase = 'fadeIn'; // fadeIn -> stay -> fadeOut
-                this.life = 0;
-                this.maxLife = random(180, 300);
-                this.dead = false;
-                this.glowIntensity = 0;
-            }
-
-            update() {
-                this.life++;
-
-                if (this.phase === 'fadeIn') {
-                    // 淡入阶段 (0-30帧)
-                    this.alpha += 0.033;
-                    this.scale += 0.016;
-                    this.glowIntensity += 0.033;
-                    if (this.life > 30) {
-                        this.phase = 'stay';
-                        this.alpha = 1;
-                        this.scale = 1;
-                        this.glowIntensity = 1;
-                    }
-                } else if (this.phase === 'stay') {
-                    // 停留阶段 - 霓虹灯闪烁效果
-                    this.glowIntensity = 0.8 + Math.sin(this.life * 0.1) * 0.2;
-
-                    if (this.life > this.maxLife - 60) {
-                        this.phase = 'fadeOut';
-                    }
-                } else if (this.phase === 'fadeOut') {
-                    // 淡出阶段
-                    this.alpha -= 0.016;
-                    this.scale += 0.008;
-                    this.glowIntensity -= 0.016;
-                }
-
-                if (this.life >= this.maxLife || this.alpha <= 0) {
-                    this.dead = true;
-                }
-            }
-
-            draw(ctx) {
-                if (this.alpha <= 0) return;
-
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation);
-                ctx.scale(this.scale, this.scale);
-                ctx.globalAlpha = this.alpha;
-
-                // 动态调整字体大小
-                const isMobile = ctx.canvas.width < 768;
-                const fontSize = isMobile ? 32 : 48;
-                ctx.font = `bold ${fontSize}px Microsoft YaHei, Arial, sans-serif`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-
-                // 外发光效果 - 多层
-                const glowColor = randomChoice(this.colors);
-                for (let i = 0; i < 3; i++) {
-                    ctx.shadowBlur = (30 + i * 10) * this.glowIntensity;
-                    ctx.shadowColor = glowColor;
-                    ctx.strokeStyle = glowColor;
-                    ctx.lineWidth = 3 - i;
-                    ctx.strokeText(this.text, 0, 0);
-                }
-
-                // 渐变填充
-                const gradient = ctx.createLinearGradient(
-                    -ctx.measureText(this.text).width / 2, -fontSize / 2,
-                    ctx.measureText(this.text).width / 2, fontSize / 2
-                );
-                gradient.addColorStop(0, this.colors[0]);
-                gradient.addColorStop(0.5, this.colors[1] || this.colors[0]);
-                gradient.addColorStop(1, this.colors[2] || this.colors[0]);
-
-                ctx.fillStyle = gradient;
-                ctx.shadowBlur = 20 * this.glowIntensity;
-                ctx.fillText(this.text, 0, 0);
-
-                // 高光效果
-                ctx.fillStyle = 'rgba(255, 255, 255, ' + (0.3 * this.glowIntensity) + ')';
-                ctx.shadowBlur = 0;
-                ctx.fillText(this.text, 0, -1);
-
-                ctx.restore();
-            }
-        }
-
-        // ==================== 玫瑰花粒子效果 ====================
-
-        class RoseParticle {
-            constructor(x, y, colors) {
-                this.x = x;
-                this.y = y;
-                this.colors = colors;
-                this.alpha = 0;
-                this.scale = 0.3;
-                this.rotation = 0;
-                this.rotationSpeed = random(0.01, 0.02);
-                this.phase = 'rise'; // rise -> bloom -> scatter
-                this.life = 0;
-                this.maxLife = random(240, 360);
-                this.dead = false;
-                this.vy = -0.5; // 上升速度
-                this.petals = []; // 花瓣粒子
-            }
-
-            update() {
-                this.life++;
-                this.rotation += this.rotationSpeed;
-
-                if (this.phase === 'rise') {
-                    // 上升并绽放阶段 (0-60帧)
-                    this.y += this.vy;
-                    this.alpha += 0.016;
-                    this.scale += 0.011;
-
-                    if (this.life > 60) {
-                        this.phase = 'bloom';
-                        this.alpha = 1;
-                        this.scale = 1;
-                        this.vy = 0;
-                    }
-                } else if (this.phase === 'bloom') {
-                    // 盛开阶段 (60-180帧)
-                    // 轻微漂浮
-                    this.y += Math.sin(this.life * 0.05) * 0.3;
-                    this.x += Math.cos(this.life * 0.05) * 0.2;
-
-                    if (this.life > this.maxLife - 120) {
-                        this.phase = 'scatter';
-                        this.createPetalParticles();
-                    }
-                } else if (this.phase === 'scatter') {
-                    // 花瓣飘散阶段
-                    this.alpha -= 0.008;
-                    this.scale -= 0.004;
-
-                    // 更新花瓣粒子
-                    for (let i = this.petals.length - 1; i >= 0; i--) {
-                        const petal = this.petals[i];
-                        petal.x += petal.vx;
-                        petal.y += petal.vy;
-                        petal.vy += 0.02; // 重力
-                        petal.rotation += petal.rotationSpeed;
-                        petal.alpha -= 0.01;
-
-                        if (petal.alpha <= 0) {
-                            this.petals.splice(i, 1);
-                        }
-                    }
-                }
-
-                if (this.life >= this.maxLife || (this.phase === 'scatter' && this.petals.length === 0)) {
-                    this.dead = true;
-                }
-            }
-
-            createPetalParticles() {
-                // 创建 8-12 片飘散的花瓣
-                const petalCount = Math.floor(random(8, 12));
-                for (let i = 0; i < petalCount; i++) {
-                    const angle = (Math.PI * 2 * i) / petalCount;
-                    this.petals.push({
-                        x: this.x,
-                        y: this.y,
-                        vx: Math.cos(angle) * random(1, 2),
-                        vy: Math.sin(angle) * random(1, 2) - 1,
-                        rotation: random(0, Math.PI * 2),
-                        rotationSpeed: random(-0.05, 0.05),
-                        alpha: 1,
-                        color: randomChoice(this.colors)
-                    });
-                }
-            }
-
-            draw(ctx) {
-                if (this.alpha <= 0 && this.petals.length === 0) return;
-
-                ctx.save();
-
-                // 绘制主玫瑰花 (使用粒子构成)
-                if (this.phase !== 'scatter' || this.alpha > 0) {
-                    ctx.translate(this.x, this.y);
-                    ctx.rotate(this.rotation);
-                    ctx.scale(this.scale, this.scale);
-                    ctx.globalAlpha = this.alpha;
-
-                    // 绘制花瓣 (5瓣)
-                    const petalCount = 5;
-                    for (let i = 0; i < petalCount; i++) {
-                        const angle = (Math.PI * 2 * i) / petalCount;
-                        ctx.save();
-                        ctx.rotate(angle);
-
-                        // 花瓣形状
-                        ctx.beginPath();
-                        ctx.fillStyle = randomChoice(this.colors);
-                        ctx.arc(0, -15, 12, 0, Math.PI * 2);
-                        ctx.fill();
-
-                        // 发光效果
-                        ctx.shadowBlur = 15;
-                        ctx.shadowColor = randomChoice(this.colors);
-                        ctx.fill();
-
-                        ctx.restore();
-                    }
-
-                    // 花心
-                    ctx.beginPath();
-                    ctx.fillStyle = '#ffbe0b';
-                    ctx.arc(0, 0, 5, 0, Math.PI * 2);
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = '#ffbe0b';
-                    ctx.fill();
-                }
-
-                ctx.restore();
-
-                // 绘制飘散的花瓣
-                this.petals.forEach(petal => {
-                    ctx.save();
-                    ctx.translate(petal.x, petal.y);
-                    ctx.rotate(petal.rotation);
-                    ctx.globalAlpha = petal.alpha;
-
-                    ctx.beginPath();
-                    ctx.fillStyle = petal.color;
-                    ctx.arc(0, 0, 6, 0, Math.PI * 2);
-                    ctx.shadowBlur = 8;
-                    ctx.shadowColor = petal.color;
-                    ctx.fill();
-
-                    ctx.restore();
-                });
-            }
-        }
-
-        // ==================== 爱心泡泡效果 ====================
-
-        class HeartBubble extends Particle {
-            constructor(x, y, color, delay = 0) {
-                super(x, y, color);
-                this.vx = random(-0.5, 0.5);
-                this.vy = -random(1, 2);
-                this.size = random(8, 16);
-                this.swingSpeed = random(0.02, 0.05);
-                this.swingAmount = random(0.5, 1);
-                this.life = 0;
-                this.maxLife = random(180, 300);
-                this.delay = delay;
-                this.scale = 0;
-            }
-
-            update() {
-                if (this.delay > 0) {
-                    this.delay--;
-                    return;
-                }
-
-                this.life++;
-
-                // 上升
-                this.y += this.vy;
-
-                // 左右摇摆
-                this.x += Math.sin(this.life * this.swingSpeed) * this.swingAmount;
-
-                // 淡入淡出
-                if (this.life < 20) {
-                    this.alpha = this.life / 20;
-                    this.scale = this.life / 20;
-                } else if (this.life > this.maxLife - 60) {
-                    this.alpha = (this.maxLife - this.life) / 60;
-                    this.scale = 0.5 + this.alpha * 0.5;
-                } else {
-                    this.alpha = 1;
-                    this.scale = 1;
-                }
-
-                if (this.life >= this.maxLife || this.alpha <= 0) {
-                    this.dead = true;
-                }
-            }
-
-            draw(ctx) {
-                if (this.alpha <= 0 || this.delay > 0) return;
-
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.scale(this.scale, this.scale);
-                ctx.globalAlpha = this.alpha;
-
-                // 绘制爱心形状
-                const size = this.size;
-                ctx.beginPath();
-                ctx.fillStyle = this.color;
-
-                // 爱心路径
-                ctx.moveTo(0, size * 0.3);
-                // 左半边
-                ctx.bezierCurveTo(-size * 0.5, -size * 0.3, -size, -size * 0.1, -size * 0.5, size * 0.5);
-                ctx.bezierCurveTo(-size * 0.5, size * 0.7, 0, size, 0, size);
-                // 右半边
-                ctx.bezierCurveTo(0, size, size * 0.5, size * 0.7, size * 0.5, size * 0.5);
-                ctx.bezierCurveTo(size, -size * 0.1, size * 0.5, -size * 0.3, 0, size * 0.3);
-
-                // 发光效果
-                ctx.shadowBlur = 15;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-
-                // 内部高光
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.shadowBlur = 0;
-                ctx.fill();
-
-                ctx.restore();
-            }
-        }
-
-        // ==================== 星星闪烁效果 ====================
-
-        class StarParticle extends Particle {
-            constructor(x, y, color, delay = 0) {
-                super(x, y, color);
-                this.size = random(6, 12);
-                this.angle = random(0, Math.PI * 2);
-                this.rotationSpeed = random(-0.05, 0.05);
-                this.orbitRadius = random(30, 80);
-                this.orbitSpeed = random(0.01, 0.03);
-                this.orbitAngle = random(0, Math.PI * 2);
-                this.centerX = x;
-                this.centerY = y;
-                this.life = 0;
-                this.maxLife = random(180, 300);
-                this.delay = delay;
-                this.twinkle = 0;
-            }
-
-            update() {
-                if (this.delay > 0) {
-                    this.delay--;
-                    return;
-                }
-
-                this.life++;
-
-                // 围绕中心点旋转
-                this.orbitAngle += this.orbitSpeed;
-                this.x = this.centerX + Math.cos(this.orbitAngle) * this.orbitRadius;
-                this.y = this.centerY + Math.sin(this.orbitAngle) * this.orbitRadius;
-
-                // 自转
-                this.angle += this.rotationSpeed;
-
-                // 闪烁效果
-                this.twinkle = 0.7 + Math.sin(this.life * 0.2) * 0.3;
-
-                // 淡入淡出
-                if (this.life < 20) {
-                    this.alpha = this.life / 20;
-                } else if (this.life > this.maxLife - 60) {
-                    this.alpha = (this.maxLife - this.life) / 60;
-                } else {
-                    this.alpha = 1;
-                }
-
-                if (this.life >= this.maxLife || this.alpha <= 0) {
-                    this.dead = true;
-                }
-            }
-
-            draw(ctx) {
-                if (this.alpha <= 0 || this.delay > 0) return;
-
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                ctx.globalAlpha = this.alpha * this.twinkle;
-
-                // 绘制五角星
-                const spikes = 5;
-                const outerRadius = this.size;
-                const innerRadius = this.size * 0.4;
-
-                ctx.beginPath();
-                for (let i = 0; i < spikes * 2; i++) {
-                    const radius = i % 2 === 0 ? outerRadius : innerRadius;
-                    const angle = (Math.PI * i) / spikes;
-                    const x = Math.cos(angle) * radius;
-                    const y = Math.sin(angle) * radius;
-
-                    if (i === 0) {
-                        ctx.moveTo(x, y);
-                    } else {
-                        ctx.lineTo(x, y);
-                    }
-                }
-                ctx.closePath();
-
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = 20;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-
-                // 高光
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.shadowBlur = 0;
-                ctx.fill();
-
-                ctx.restore();
-            }
-        }
-
         // ==================== 粒子系统管理器 ====================
 
         class ParticleSystem {
@@ -954,17 +467,11 @@
                 this.ctx = canvas.getContext('2d');
                 this.particles = [];
                 this.fireworks = [];
-                this.neonTexts = [];  // 霓虹灯文字数组
-                this.roses = [];  // 玫瑰花数组
-                this.heartBubbles = [];  // 爱心泡泡数组
-                this.stars = [];  // 星星数组
                 this.lastFireworkTime = 0;
                 this.fireworkInterval = random(1000, 3000);
                 this.maxParticles = 5000;
                 this.activeTextEffects = 0;
                 this.maxTextEffects = 3;
-                this.activeSpecialEffects = 0;
-                this.maxSpecialEffects = 2;
 
                 this.resize();
                 window.addEventListener('resize', () => this.resize());
@@ -998,7 +505,7 @@
             }
 
             /**
-             * 添加文字效果 (粒子文字或霓虹灯文字)
+             * 添加文字效果
              */
             addTextEffect(clickX, clickY) {
                 if (this.activeTextEffects >= this.maxTextEffects) {
@@ -1008,127 +515,22 @@
                 const message = randomChoice(LOVE_MESSAGES);
                 const colors = randomChoice(COLOR_SCHEMES);
 
-                // 50% 概率使用霓虹灯文字, 50% 使用粒子文字
-                const useNeonText = Math.random() < 0.5;
+                // 根据屏幕宽度动态调整字体大小
+                const isMobile = this.canvas.width < 768;
+                const fontSize = isMobile
+                    ? Math.floor(random(24, 40))  // 移动端：24-40px
+                    : Math.floor(random(36, 56)); // 桌面端：36-56px
 
-                if (useNeonText) {
-                    // 霓虹灯文字效果 - 更清晰易读
-                    const neonText = new NeonText(clickX, clickY, message, colors);
-                    this.neonTexts.push(neonText);
-                } else {
-                    // 粒子文字效果 - 保留原有效果
-                    const isMobile = this.canvas.width < 768;
-                    const fontSize = isMobile
-                        ? Math.floor(random(24, 40))  // 移动端：24-40px
-                        : Math.floor(random(36, 56)); // 桌面端：36-56px
+                // 使用离屏 Canvas 渲染文字并采样像素
+                const textParticles = this.getTextPixels(message, fontSize, clickX, clickY, colors);
 
-                    const textParticles = this.getTextPixels(message, fontSize, clickX, clickY, colors);
-                    this.particles.push(...textParticles);
-                }
-
+                this.particles.push(...textParticles);
                 this.activeTextEffects++;
 
                 // 设置定时器减少计数
                 setTimeout(() => {
                     this.activeTextEffects--;
                 }, random(3000, 5000));
-            }
-
-            /**
-             * 添加玫瑰花效果
-             */
-            addRoseEffect(clickX, clickY) {
-                if (this.activeSpecialEffects >= this.maxSpecialEffects) {
-                    return;
-                }
-
-                const colors = randomChoice(COLOR_SCHEMES);
-                const rose = new RoseParticle(clickX, clickY, colors);
-                this.roses.push(rose);
-
-                this.activeSpecialEffects++;
-                setTimeout(() => {
-                    this.activeSpecialEffects--;
-                }, random(3000, 6000));
-            }
-
-            /**
-             * 添加爱心泡泡效果
-             */
-            addHeartBubblesEffect(clickX, clickY) {
-                if (this.activeSpecialEffects >= this.maxSpecialEffects) {
-                    return;
-                }
-
-                const colors = randomChoice(COLOR_SCHEMES);
-                const bubbleCount = Math.floor(random(5, 10));
-
-                for (let i = 0; i < bubbleCount; i++) {
-                    const offsetX = random(-30, 30);
-                    const offsetY = random(-20, 20);
-                    const delay = i * 5;
-                    const bubble = new HeartBubble(
-                        clickX + offsetX,
-                        clickY + offsetY,
-                        randomChoice(colors),
-                        delay
-                    );
-                    this.heartBubbles.push(bubble);
-                }
-
-                this.activeSpecialEffects++;
-                setTimeout(() => {
-                    this.activeSpecialEffects--;
-                }, random(3000, 5000));
-            }
-
-            /**
-             * 添加星星闪烁效果
-             */
-            addStarsEffect(clickX, clickY) {
-                if (this.activeSpecialEffects >= this.maxSpecialEffects) {
-                    return;
-                }
-
-                const colors = randomChoice(COLOR_SCHEMES);
-                const starCount = Math.floor(random(6, 10));
-
-                for (let i = 0; i < starCount; i++) {
-                    const delay = i * 8;
-                    const star = new StarParticle(
-                        clickX,
-                        clickY,
-                        randomChoice(colors),
-                        delay
-                    );
-                    this.stars.push(star);
-                }
-
-                this.activeSpecialEffects++;
-                setTimeout(() => {
-                    this.activeSpecialEffects--;
-                }, random(3000, 5000));
-            }
-
-            /**
-             * 随机选择并添加点击效果
-             */
-            addRandomClickEffect(clickX, clickY) {
-                const rand = Math.random();
-
-                if (rand < 0.4) {
-                    // 40% - 文字告白
-                    this.addTextEffect(clickX, clickY);
-                } else if (rand < 0.7) {
-                    // 30% - 玫瑰花
-                    this.addRoseEffect(clickX, clickY);
-                } else if (rand < 0.85) {
-                    // 15% - 爱心泡泡
-                    this.addHeartBubblesEffect(clickX, clickY);
-                } else {
-                    // 15% - 星星闪烁
-                    this.addStarsEffect(clickX, clickY);
-                }
             }
 
             /**
@@ -1278,46 +680,6 @@
                     }
                 }
 
-                // 更新霓虹灯文字
-                for (let i = this.neonTexts.length - 1; i >= 0; i--) {
-                    const neonText = this.neonTexts[i];
-                    neonText.update();
-
-                    if (neonText.dead) {
-                        this.neonTexts.splice(i, 1);
-                    }
-                }
-
-                // 更新玫瑰花
-                for (let i = this.roses.length - 1; i >= 0; i--) {
-                    const rose = this.roses[i];
-                    rose.update();
-
-                    if (rose.dead) {
-                        this.roses.splice(i, 1);
-                    }
-                }
-
-                // 更新爱心泡泡
-                for (let i = this.heartBubbles.length - 1; i >= 0; i--) {
-                    const bubble = this.heartBubbles[i];
-                    bubble.update();
-
-                    if (bubble.dead) {
-                        this.heartBubbles.splice(i, 1);
-                    }
-                }
-
-                // 更新星星
-                for (let i = this.stars.length - 1; i >= 0; i--) {
-                    const star = this.stars[i];
-                    star.update();
-
-                    if (star.dead) {
-                        this.stars.splice(i, 1);
-                    }
-                }
-
                 // 限制总粒子数
                 if (this.particles.length > this.maxParticles) {
                     this.particles.splice(0, this.particles.length - this.maxParticles);
@@ -1337,18 +699,6 @@
 
                 // 绘制粒子
                 this.particles.forEach(particle => particle.draw(this.ctx));
-
-                // 绘制爱心泡泡
-                this.heartBubbles.forEach(bubble => bubble.draw(this.ctx));
-
-                // 绘制星星
-                this.stars.forEach(star => star.draw(this.ctx));
-
-                // 绘制玫瑰花
-                this.roses.forEach(rose => rose.draw(this.ctx));
-
-                // 绘制霓虹灯文字 (在最上层)
-                this.neonTexts.forEach(neonText => neonText.draw(this.ctx));
             }
 
             /**
@@ -1433,12 +783,12 @@
                 loading.classList.add('hidden');
             }, 500);
 
-            // 点击事件：随机添加各种效果
+            // 点击事件：添加文字粒子效果
             canvas.addEventListener('click', (e) => {
                 const rect = canvas.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                system.addRandomClickEffect(x, y);
+                system.addTextEffect(x, y);
             });
 
             // 触摸事件支持（移动端）
@@ -1448,7 +798,7 @@
                 const touch = e.touches[0];
                 const x = touch.clientX - rect.left;
                 const y = touch.clientY - rect.top;
-                system.addRandomClickEffect(x, y);
+                system.addTextEffect(x, y);
             });
 
             // 启动动画循环
