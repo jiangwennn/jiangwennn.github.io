@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情人节烟花告白 - 献给万万</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        #fireworksCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        /* 加载提示 */
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        #loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ==================== 纪念日组件 ==================== */
+
+        #anniversaryCounter {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            pointer-events: none;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            font-weight: bold;
+            text-align: center;
+            user-select: none;
+
+            /* 发光效果 */
+            filter: drop-shadow(0 0 10px rgba(255, 0, 110, 0.6))
+                    drop-shadow(0 0 20px rgba(251, 86, 7, 0.4));
+
+            /* 呼吸动画 */
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        /* 普通文字样式 */
+        .anniversary-text {
+            font-size: 24px;
+            color: #fff;
+            text-shadow:
+                0 0 5px rgba(255, 255, 255, 0.8),
+                0 0 10px rgba(255, 0, 110, 0.6),
+                0 0 15px rgba(251, 86, 7, 0.4);
+            letter-spacing: 2px;
+        }
+
+        /* 数字样式(更大、更醒目) */
+        .anniversary-days {
+            font-size: 56px;
+            font-weight: 900;
+            color: #fff;
+
+            /* 渐变色 */
+            background: linear-gradient(135deg,
+                #ff006e 0%,
+                #ff4d6d 35%,
+                #ffbe0b 70%,
+                #fb5607 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+
+            /* 多层文字阴影 */
+            text-shadow:
+                0 0 10px rgba(255, 0, 110, 0.8),
+                0 0 20px rgba(255, 77, 109, 0.6),
+                0 0 30px rgba(255, 190, 11, 0.4),
+                0 0 40px rgba(251, 86, 7, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.5);
+
+            /* 数字脉动动画 */
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* 呼吸动画 */
+        @keyframes breathe {
+            0%, 100% {
+                opacity: 0.85;
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.02);
+            }
+        }
+
+        /* 数字脉动动画 */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            #anniversaryCounter {
+                top: 15px;
+                gap: 5px;
+                filter: drop-shadow(0 0 6px rgba(255, 0, 110, 0.5))
+                        drop-shadow(0 0 12px rgba(251, 86, 7, 0.3));
+            }
+
+            .anniversary-text {
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+
+            .anniversary-days {
+                font-size: 36px;
+                text-shadow:
+                    0 0 8px rgba(255, 0, 110, 0.7),
+                    0 0 15px rgba(255, 77, 109, 0.5),
+                    0 0 20px rgba(255, 190, 11, 0.3),
+                    1px 1px 3px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* 超小屏幕优化 */
+        @media (max-width: 375px) {
+            #anniversaryCounter {
+                top: 10px;
+            }
+
+            .anniversary-text {
+                font-size: 14px;
+            }
+
+            .anniversary-days {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <p>✨ 为万万准备烟花中... ✨</p>
+    </div>
+
+    <!-- 纪念日显示组件 -->
+    <div id="anniversaryCounter">
+        <div class="anniversary-text">在一起</div>
+        <div class="anniversary-days" id="daysCount">0</div>
+        <div class="anniversary-text">天</div>
+    </div>
+
+    <canvas id="fireworksCanvas"></canvas>
+
+    <script>
+        // ==================== 工具函数 ====================
+
+        /**
+         * 生成指定范围内的随机数
+         */
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        /**
+         * 从数组中随机选择一个元素
+         */
+        function randomChoice(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        /**
+         * 颜色配置方案
+         */
+        const COLOR_SCHEMES = [
+            ['#ff006e', '#fb5607', '#ffbe0b', '#8338ec'],  // 鲜艳彩虹
+            ['#ff006e', '#ff4d6d', '#ffb3c1', '#ffc6d9'],  // 粉红系
+            ['#7209b7', '#b185db', '#f72585', '#4361ee'],  // 紫粉系
+            ['#06ffa5', '#00d9ff', '#4cc9f0', '#7209b7'],  // 青紫系
+            ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec'],  // 暖色系
+            ['#ff006e', '#d62828', '#f77f00', '#fcbf49'],  // 火焰系
+            ['#f72585', '#b5179e', '#7209b7', '#560bad'],  // 紫红系
+        ];
+
+        /**
+         * 告白文字库
+         */
+        const LOVE_MESSAGES = [
+            '万万，我爱你',
+            '万万，永远爱你',
+            '万万 ❤ Forever',
+            'Love U 万万',
+            '万万是我的星星',
+            '遇见你是最美的意外',
+            '万万，你是我的唯一',
+            '想和万万度过每一天'
+        ];
+
+        // ==================== 粒子基类 ====================
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.alpha = 1;
+                this.dead = false;
+            }
+
+            update() {
+                // 子类实现
+            }
+
+            draw(ctx) {
+                // 子类实现
+            }
+        }
+
+        // ==================== 烟花发射粒子 ====================
+
+        class FireworkParticle extends Particle {
+            constructor(x, y, targetY, colors) {
+                super(x, y, randomChoice(colors));
+                this.targetY = targetY;
+                this.speed = random(8, 12);
+                this.colors = colors;
+                this.trail = [];
+                this.maxTrailLength = 10;
+            }
+
+            update() {
+                // 保存轨迹
+                this.trail.push({ x: this.x, y: this.y, alpha: this.alpha });
+                if (this.trail.length > this.maxTrailLength) {
+                    this.trail.shift();
+                }
+
+                // 向上移动
+                this.y -= this.speed;
+                this.speed *= 0.98; // 减速
+
+                // 到达目标高度时标记为死亡
+                if (this.y <= this.targetY || this.speed < 1) {
+                    this.dead = true;
+                }
+            }
+
+            draw(ctx) {
+                // 绘制尾迹
+                this.trail.forEach((point, index) => {
+                    const trailAlpha = (index / this.trail.length) * 0.5;
+                    ctx.fillStyle = this.color.replace(')', `, ${trailAlpha})`).replace('rgb', 'rgba');
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // 绘制主体
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            /**
+             * 创建爆炸效果
+             */
+            explode() {
+                const sparks = [];
+                const particleCount = Math.floor(random(50, 100));
+                const explosionType = randomChoice(['circle', 'heart', 'ring', 'random']);
+
+                for (let i = 0; i < particleCount; i++) {
+                    let angle, speed;
+
+                    if (explosionType === 'circle') {
+                        // 圆形爆炸
+                        angle = (Math.PI * 2 * i) / particleCount;
+                        speed = random(2, 6);
+                    } else if (explosionType === 'heart') {
+                        // 心形爆炸
+                        const t = (i / particleCount) * Math.PI * 2;
+                        const heartX = 16 * Math.pow(Math.sin(t), 3);
+                        const heartY = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+                        angle = Math.atan2(heartY, heartX);
+                        speed = random(1, 3);
+                    } else if (explosionType === 'ring') {
+                        // 环形爆炸
+                        angle = (Math.PI * 2 * i) / particleCount;
+                        speed = random(4, 5);
+                    } else {
+                        // 随机散射
+                        angle = random(0, Math.PI * 2);
+                        speed = random(1, 8);
+                    }
+
+                    sparks.push(new SparkParticle(
+                        this.x,
+                        this.y,
+                        angle,
+                        speed,
+                        randomChoice(this.colors)
+                    ));
+                }
+
+                return sparks;
+            }
+        }
+
+        // ==================== 烟花火花粒子 ====================
+
+        class SparkParticle extends Particle {
+            constructor(x, y, angle, speed, color) {
+                super(x, y, color);
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.gravity = 0.05;
+                this.friction = 0.98;
+                this.life = 100;
+                this.maxLife = 100;
+            }
+
+            update() {
+                // 应用速度
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // 应用重力
+                this.vy += this.gravity;
+
+                // 应用摩擦力
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+
+                // 减少生命值
+                this.life--;
+                this.alpha = this.life / this.maxLife;
+
+                // 标记死亡
+                if (this.life <= 0 || this.alpha < 0.01) {
+                    this.dead = true;
+                }
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // ==================== 文字粒子 ====================
+
+        class TextParticle extends Particle {
+            constructor(x, y, targetX, targetY, color) {
+                super(x, y, color);
+                this.targetX = targetX;
+                this.targetY = targetY;
+                this.vx = 0;
+                this.vy = 0;
+                this.phase = 'gather'; // gather -> stay -> explode
+                this.life = 0;
+                this.maxLife = random(180, 300); // 3-5秒
+            }
+
+            update() {
+                this.life++;
+
+                if (this.phase === 'gather') {
+                    // 汇聚阶段（0-60帧，约1秒）
+                    const dx = this.targetX - this.x;
+                    const dy = this.targetY - this.y;
+                    this.vx = dx * 0.1;
+                    this.vy = dy * 0.1;
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.life > 60) {
+                        this.phase = 'stay';
+                    }
+                } else if (this.phase === 'stay') {
+                    // 停留阶段（60-180帧，约2秒）
+                    // 轻微抖动
+                    this.x = this.targetX + random(-0.5, 0.5);
+                    this.y = this.targetY + random(-0.5, 0.5);
+                    this.alpha = 1;
+
+                    if (this.life > this.maxLife - 60) {
+                        this.phase = 'explode';
+                        // 初始化爆炸速度
+                        const angle = random(0, Math.PI * 2);
+                        const speed = random(2, 5);
+                        this.vx = Math.cos(angle) * speed;
+                        this.vy = Math.sin(angle) * speed - random(1, 3);
+                    }
+                } else if (this.phase === 'explode') {
+                    // 爆炸消散阶段
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.vy += 0.1; // 重力
+                    this.vx *= 0.98;
+                    this.vy *= 0.98;
+
+                    const explodeProgress = (this.life - (this.maxLife - 60)) / 60;
+                    this.alpha = 1 - explodeProgress;
+                }
+
+                if (this.life >= this.maxLife || this.alpha < 0.01) {
+                    this.dead = true;
+                }
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // ==================== 粒子系统管理器 ====================
+
+        class ParticleSystem {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.particles = [];
+                this.fireworks = [];
+                this.lastFireworkTime = 0;
+                this.fireworkInterval = random(1000, 3000);
+                this.maxParticles = 5000;
+                this.activeTextEffects = 0;
+                this.maxTextEffects = 3;
+
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+
+            /**
+             * 添加背景烟花
+             */
+            addBackgroundFirework(currentTime) {
+                if (currentTime - this.lastFireworkTime > this.fireworkInterval) {
+                    const colors = randomChoice(COLOR_SCHEMES);
+                    const x = random(this.canvas.width * 0.2, this.canvas.width * 0.8);
+                    const y = this.canvas.height;
+                    const targetY = random(this.canvas.height * 0.2, this.canvas.height * 0.5);
+
+                    this.fireworks.push(new FireworkParticle(x, y, targetY, colors));
+
+                    this.lastFireworkTime = currentTime;
+                    this.fireworkInterval = random(1000, 3000);
+
+                    // 限制同时存在的烟花数量
+                    if (this.fireworks.length > 8) {
+                        this.fireworks.shift();
+                    }
+                }
+            }
+
+            /**
+             * 添加文字效果
+             */
+            addTextEffect(clickX, clickY) {
+                if (this.activeTextEffects >= this.maxTextEffects) {
+                    return; // 限制同时存在的文字效果
+                }
+
+                const message = randomChoice(LOVE_MESSAGES);
+                const colors = randomChoice(COLOR_SCHEMES);
+
+                // 根据屏幕宽度动态调整字体大小
+                const isMobile = this.canvas.width < 768;
+                const fontSize = isMobile
+                    ? Math.floor(random(24, 40))  // 移动端：24-40px
+                    : Math.floor(random(36, 56)); // 桌面端：36-56px
+
+                // 使用离屏 Canvas 渲染文字并采样像素
+                const textParticles = this.getTextPixels(message, fontSize, clickX, clickY, colors);
+
+                this.particles.push(...textParticles);
+                this.activeTextEffects++;
+
+                // 设置定时器减少计数
+                setTimeout(() => {
+                    this.activeTextEffects--;
+                }, random(3000, 5000));
+            }
+
+            /**
+             * 从文字渲染中采样像素点作为粒子
+             */
+            getTextPixels(text, fontSize, centerX, centerY, colors) {
+                const offscreenCanvas = document.createElement('canvas');
+                const offscreenCtx = offscreenCanvas.getContext('2d');
+
+                // 设置字体
+                offscreenCtx.font = `bold ${fontSize}px Microsoft YaHei, Arial, sans-serif`;
+
+                // 检查文字宽度，如果超过屏幕宽度的 80%，进行换行处理
+                const maxWidth = this.canvas.width * 0.8;
+                const lines = this.wrapText(offscreenCtx, text, maxWidth);
+
+                // 计算总文字尺寸
+                let maxLineWidth = 0;
+                lines.forEach(line => {
+                    const lineWidth = offscreenCtx.measureText(line).width;
+                    if (lineWidth > maxLineWidth) {
+                        maxLineWidth = lineWidth;
+                    }
+                });
+
+                const lineHeight = fontSize * 1.3;
+                const textWidth = maxLineWidth;
+                const textHeight = lines.length * lineHeight;
+
+                // 边界检查：调整中心点确保文字不超出屏幕
+                const margin = 20;
+                const finalCenterX = Math.max(textWidth / 2 + margin, Math.min(centerX, this.canvas.width - textWidth / 2 - margin));
+                const finalCenterY = Math.max(textHeight / 2 + margin, Math.min(centerY, this.canvas.height - textHeight / 2 - margin));
+
+                offscreenCanvas.width = textWidth + 40;
+                offscreenCanvas.height = textHeight + 40;
+
+                // 重新设置字体（canvas 尺寸改变后需要重新设置）
+                offscreenCtx.font = `bold ${fontSize}px Microsoft YaHei, Arial, sans-serif`;
+                offscreenCtx.fillStyle = '#ffffff';
+                offscreenCtx.textBaseline = 'top';
+
+                // 渲染多行文字
+                lines.forEach((line, index) => {
+                    const lineWidth = offscreenCtx.measureText(line).width;
+                    const x = (offscreenCanvas.width - lineWidth) / 2;
+                    const y = 20 + index * lineHeight;
+                    offscreenCtx.fillText(line, x, y);
+                });
+
+                // 获取像素数据
+                const imageData = offscreenCtx.getImageData(0, 0, offscreenCanvas.width, offscreenCanvas.height);
+                const pixels = imageData.data;
+
+                const particles = [];
+                const step = 4; // 每隔4个像素采样一次
+
+                for (let y = 0; y < offscreenCanvas.height; y += step) {
+                    for (let x = 0; x < offscreenCanvas.width; x += step) {
+                        const index = (y * offscreenCanvas.width + x) * 4;
+                        const alpha = pixels[index + 3];
+
+                        if (alpha > 128) { // 只采样不透明的像素
+                            const targetX = finalCenterX - offscreenCanvas.width / 2 + x;
+                            const targetY = finalCenterY - offscreenCanvas.height / 2 + y;
+
+                            // 粒子初始位置在点击位置周围随机分布
+                            const startX = finalCenterX + random(-100, 100);
+                            const startY = finalCenterY + random(-100, 100);
+
+                            particles.push(new TextParticle(
+                                startX,
+                                startY,
+                                targetX,
+                                targetY,
+                                randomChoice(colors)
+                            ));
+                        }
+                    }
+                }
+
+                return particles;
+            }
+
+            /**
+             * 文字换行处理
+             */
+            wrapText(ctx, text, maxWidth) {
+                // 检查是否需要换行
+                const fullWidth = ctx.measureText(text).width;
+                if (fullWidth <= maxWidth) {
+                    return [text];
+                }
+
+                // 按照逗号、空格等分隔符尝试换行
+                const words = text.split(/([,，\s❤])/);
+                const lines = [];
+                let currentLine = '';
+
+                for (let i = 0; i < words.length; i++) {
+                    const word = words[i];
+                    const testLine = currentLine + word;
+                    const testWidth = ctx.measureText(testLine).width;
+
+                    if (testWidth > maxWidth && currentLine !== '') {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = testLine;
+                    }
+                }
+
+                if (currentLine) {
+                    lines.push(currentLine);
+                }
+
+                return lines.length > 0 ? lines : [text];
+            }
+
+            /**
+             * 更新所有粒子
+             */
+            update(currentTime) {
+                // 添加背景烟花
+                this.addBackgroundFirework(currentTime);
+
+                // 更新并爆炸烟花
+                for (let i = this.fireworks.length - 1; i >= 0; i--) {
+                    const firework = this.fireworks[i];
+                    firework.update();
+
+                    if (firework.dead) {
+                        // 创建爆炸效果
+                        const sparks = firework.explode();
+                        this.particles.push(...sparks);
+                        this.fireworks.splice(i, 1);
+                    }
+                }
+
+                // 更新所有粒子
+                for (let i = this.particles.length - 1; i >= 0; i--) {
+                    const particle = this.particles[i];
+                    particle.update();
+
+                    if (particle.dead) {
+                        this.particles.splice(i, 1);
+                    }
+                }
+
+                // 限制总粒子数
+                if (this.particles.length > this.maxParticles) {
+                    this.particles.splice(0, this.particles.length - this.maxParticles);
+                }
+            }
+
+            /**
+             * 绘制所有粒子
+             */
+            draw() {
+                // 清空画布（使用半透明黑色创建拖尾效果）
+                this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // 绘制烟花
+                this.fireworks.forEach(firework => firework.draw(this.ctx));
+
+                // 绘制粒子
+                this.particles.forEach(particle => particle.draw(this.ctx));
+            }
+
+            /**
+             * 主动画循环
+             */
+            animate(currentTime) {
+                this.update(currentTime);
+                this.draw();
+                requestAnimationFrame((time) => this.animate(time));
+            }
+        }
+
+        // ==================== 主程序初始化 ====================
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('fireworksCanvas');
+            const loading = document.getElementById('loading');
+            const system = new ParticleSystem(canvas);
+
+            // ==================== 纪念日计算 ====================
+
+            /**
+             * 计算从指定日期到当前的天数
+             */
+            function calculateDaysSince(startDate) {
+                const start = new Date(startDate);
+                const today = new Date();
+
+                // 重置时间为当天 00:00:00
+                start.setHours(0, 0, 0, 0);
+                today.setHours(0, 0, 0, 0);
+
+                const diffTime = today - start;
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+                return diffDays;
+            }
+
+            /**
+             * 更新纪念日显示
+             */
+            function updateAnniversary() {
+                const daysElement = document.getElementById('daysCount');
+                if (!daysElement) return;
+
+                const days = calculateDaysSince('2025-05-09');
+
+                // 数字动画效果
+                const currentValue = parseInt(daysElement.textContent) || 0;
+                if (currentValue !== days) {
+                    animateCounter(daysElement, currentValue, days, 1000);
+                }
+            }
+
+            /**
+             * 数字滚动动画
+             */
+            function animateCounter(element, start, end, duration) {
+                const range = end - start;
+                const increment = range > 0 ? 1 : -1;
+                const stepTime = Math.abs(Math.floor(duration / range));
+                let current = start;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    element.textContent = current;
+
+                    if (current === end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            // 初始化纪念日组件
+            updateAnniversary();
+
+            // 每小时更新一次
+            setInterval(updateAnniversary, 1000 * 60 * 60);
+
+            // 隐藏加载提示
+            setTimeout(() => {
+                loading.classList.add('hidden');
+            }, 500);
+
+            // 点击事件：添加文字粒子效果
+            canvas.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                system.addTextEffect(x, y);
+            });
+
+            // 触摸事件支持（移动端）
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                system.addTextEffect(x, y);
+            });
+
+            // 启动动画循环
+            system.animate(performance.now());
+
+            // 调试信息（可选，生产环境可删除）
+            setInterval(() => {
+                const fps = 60; // 假设60fps
+                console.log(`粒子数: ${system.particles.length}, 烟花数: ${system.fireworks.length}, 文字效果: ${system.activeTextEffects}`);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
